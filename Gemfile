@@ -31,7 +31,7 @@ gem 'bootsnap', '>= 1.4.2', require: false
 
 # Custom Gems
 gem 'devise'
-gem 'devise-bootstrap-views', '~> 1.0'
+
 
 
 
