@@ -10,10 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_07_26_042238) do
+ActiveRecord::Schema.define(version: 2021_07_26_054539) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "categories", force: :cascade do |t|
+    t.string "category_name"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
 
   create_table "clients_programs", force: :cascade do |t|
     t.bigint "user_id", null: false
@@ -24,17 +30,41 @@ ActiveRecord::Schema.define(version: 2021_07_26_042238) do
     t.index ["user_id"], name: "index_clients_programs_on_user_id"
   end
 
+  create_table "profiles", force: :cascade do |t|
+    t.date "age"
+    t.float "height"
+    t.float "weight"
+    t.integer "body_fat_percentage"
+    t.bigint "user_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id"], name: "index_profiles_on_user_id"
+  end
+
   create_table "programs", force: :cascade do |t|
     t.string "title"
     t.text "description"
     t.integer "duration"
     t.text "content"
     t.integer "coach_id"
-    t.integer "client_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.bigint "user_id"
+    t.bigint "category_id", null: false
+    t.index ["category_id"], name: "index_programs_on_category_id"
     t.index ["user_id"], name: "index_programs_on_user_id"
+  end
+
+  create_table "reviews", force: :cascade do |t|
+    t.string "title"
+    t.text "content"
+    t.integer "rating"
+    t.bigint "user_id", null: false
+    t.bigint "program_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["program_id"], name: "index_reviews_on_program_id"
+    t.index ["user_id"], name: "index_reviews_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -53,5 +83,9 @@ ActiveRecord::Schema.define(version: 2021_07_26_042238) do
 
   add_foreign_key "clients_programs", "programs"
   add_foreign_key "clients_programs", "users"
+  add_foreign_key "profiles", "users"
+  add_foreign_key "programs", "categories"
   add_foreign_key "programs", "users"
+  add_foreign_key "reviews", "programs"
+  add_foreign_key "reviews", "users"
 end
