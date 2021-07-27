@@ -3,12 +3,21 @@
 <p>Description: <%= @program.description %></p>
 <p>Duration: <%= @program.duration %></p>
 <p>Content: <%= @program.content %></p>
-<p>Coach: <%= @program.coach.first_name %></p>
+<p>Coach: <%= @program.coach.first_name %> <%= @program.coach.last_name %></p>
 <p>Category: <%= @program.category.category_name %></p>
+<p>Price: <%= @program.price %></p>
 
 
 <% if @program.image.attached? %>
     <%= image_tag @program.image, class: 'card-img-top' %>
 <% else %>
     <%= image_tag "blank-program.jpg", class: 'card-img-top' %>
+<% end %>
+
+
+<% if @program.coach == current_user %>
+    <%= link_to 'Edit', edit_program_path(@program), class: 'btn btn-warning' %>
+    <%= link_to 'Delete', program_path(@program), method: :delete, class: 'btn btn-danger' %>
+<% else %>
+    <%= link_to 'Purchase', '#', class: 'btn btn-primary' %>
 <% end %>

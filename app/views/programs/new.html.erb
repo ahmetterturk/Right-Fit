@@ -8,8 +8,11 @@
     <%= form.label :description, "Description:" %><br>
     <%= form.text_area :description %><br>
 
+    <%= form.label :price, "Price:" %><br>
+    <%= form.number_field :price, min: 0 %><br>
+
     <%= form.label :duration, "Duration:" %><br>
-    <%= form.number_field :duration, in: 1..52 %><br>
+    <%= form.number_field :duration, min: 0 %><br>
 
     <%= form.label :content, "Content:" %><br>
     <%= form.text_area :content %><br>
