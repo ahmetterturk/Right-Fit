@@ -1,13 +1,6 @@
-<h1>Index Page</h1>
+<h1>Suggestions</h1>
 
-
-
-<br><br>
-<h2>Not sure where to start? let us make you a suggestion</h2>
-<%= link_to "Make me a Suggestion", suggestions_path, class:'btn btn-primary'%>
-<br><br><br><br>
-
-<% @programs.each do |program| %>
+<% @suggested_program.each do |program| %>
     <div class="card" style="width: 18rem;">
         <% if program.image.attached? %>
             <%= image_tag program.image, class: 'card-img-top' %>

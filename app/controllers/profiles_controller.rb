@@ -37,7 +37,7 @@ class ProfilesController < ApplicationController
         end
     end
 
-
+    # did not test this yet
     def delete 
         @profile = current_user.profile 
         @profile.destroy
