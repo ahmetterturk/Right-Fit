@@ -1,0 +1,22 @@
+<h1><%= current_user.first_name %> <%= current_user.last_name %></h1>
+
+
+<h2>Measures</h2>
+<% if current_user.profile %>
+    <p>Age: <%= current_user.profile.age %></p> 
+    <p>Height: <%= current_user.profile.height %></p> 
+    <p>Weight: <%= current_user.profile.weight %></p> 
+    <p>Body Fat Percentage: <%= current_user.profile.body_fat_percentage %></p> 
+    <p>User ID:<%= current_user.profile.user_id %></p> 
+    <%= link_to "Edit Profile", edit_profile_path %>
+<% else %>
+    You don't have a body profile. create a profile 
+    <%= link_to "Create Profile", new_profile_path %>
+<% end %>
+
+<h2>Coached Programs</h2>
+
+
+
+
+<h2>Attended Programs</h2>
