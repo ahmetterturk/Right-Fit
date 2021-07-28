@@ -17,7 +17,8 @@ class ProfilesController < ApplicationController
         @profile = Profile.new(get_program_params)
         @profile.user = current_user
         if @profile.save 
-            redirect_to user_page_path(current_user)
+            # redirect_to user_page_path(current_user)
+            redirect_to suggestions_path
         else
             render 'new'
         end

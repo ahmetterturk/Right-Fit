@@ -11,3 +11,15 @@ categories = ["Strength Training", "Endurance Training", "Flexibility and Mobili
 categories.each do |training|
     Category.create(category_name: training)
 end
+
+
+# 10.times do |i|
+#     User.create(
+#         first_name: Faker::Name.first_name,
+#         last_name: Faker::Name.last_name,
+#         email: Faker::Internet.email(domain: 'email'),
+#         password: 'password',
+#         password_confirmation: 'password'
+#     )
+#     puts "created user #{i}"
+# end

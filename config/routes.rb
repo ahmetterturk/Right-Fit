@@ -9,7 +9,8 @@ Rails.application.routes.draw do
   get '/programs/:id', to: 'programs#show', as: 'program'
   get '/programs/:id/edit', to: 'programs#edit', as: 'edit_program'
   patch '/programs/:id', to: 'programs#update'
-  delete '/programs/:id', to: 'programs#delete'
+  # delete '/programs/:id', to: 'programs#delete'
+  delete '/programs/:id', to: 'programs#delete', as: 'delete_program'
 
   # users
   get '/users/:id', to: 'users#page', as: 'user_page'
@@ -21,7 +22,7 @@ Rails.application.routes.draw do
   post '/profiles', to: 'profiles#create'
   get '/users/profile/edit', to: 'profiles#edit', as: 'edit_profile'
   patch '/users/profile', to: 'profiles#update'
-  patch '/users/profile', to: 'profiles#delete'
+  delete '/users/profile', to: 'profiles#delete'
 
   # suggestions
   get '/suggestions', to: 'suggestions#index', as: 'suggestions'

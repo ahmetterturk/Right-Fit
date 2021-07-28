@@ -9,7 +9,7 @@
     <p>Body Fat Percentage: <%= current_user.profile.body_fat_percentage %></p> 
     <p>User ID:<%= current_user.profile.user_id %></p> 
     <%= link_to "Edit Profile", edit_profile_path %>
-    <%= link_to "Delete Profile", current_user.profile, method: :delete %>
+    <%= button_to "Delete Profile", current_user.profile, method: :delete %>
 <% else %>
     You don't have a body profile. create a profile 
     <%= link_to "Create Profile", new_profile_path %>

@@ -41,9 +41,17 @@ class ProgramsController < ApplicationController
     end
 
     def delete
+        puts '==========================='
+        puts 'Stuck Here 0'
         @program = Program.find(params[:id])
+        puts '==========================='
+        puts 'Stuck Here 1'
         @program.destroy
+        puts '==========================='
+        puts 'Stuck Here 2'
         redirect_to programs_path
+        puts '==========================='
+        puts 'Stuck Here 3'
     end
 
     private
