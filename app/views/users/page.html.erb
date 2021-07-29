@@ -7,7 +7,8 @@
     <p>Height: <%= current_user.profile.height %></p> 
     <p>Weight: <%= current_user.profile.weight %></p> 
     <p>Body Fat Percentage: <%= current_user.profile.body_fat_percentage %></p> 
-    <p>User ID:<%= current_user.profile.user_id %></p> 
+    <p>User ID:<%= current_user.profile.user_id %></p>
+    <p>BMI: <%= @bmi %></p>
     <%= link_to "Edit Profile", edit_profile_path %>
     <%= button_to "Delete Profile", current_user.profile, method: :delete %>
 <% else %>
