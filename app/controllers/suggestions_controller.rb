@@ -13,7 +13,7 @@ class SuggestionsController < ApplicationController
                 @suggested_category = Category.where(category_name: ['Flexibility and Mobility Training'])
             end
         else
-            render :template => 'profiles/new'
+            redirect_to new_profile_path
         end
 
         puts '======================'
