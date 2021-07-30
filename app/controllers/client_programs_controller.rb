@@ -1,4 +1,6 @@
 class ClientProgramsController < ApplicationController
+    before_action :authenticate_user!
+
     def create 
         program = Program.find(params[:program])
         if !current_user.programs_to_attend.include?(program)
