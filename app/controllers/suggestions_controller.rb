@@ -5,9 +5,9 @@ class SuggestionsController < ApplicationController
         @programs = []
 
         if current_user.profile 
-            if calculated_bmi > 31
+            if calculated_bmi > 30
                 suggested_categories = Category.where(category_name: ['Cardiovascular Training']).to_a
-            elsif calculated_bmi > 20 && calculated_bmi < 31
+            elsif calculated_bmi > 20 && calculated_bmi < 30
                 suggested_categories = Category.where(category_name: ['Cardiovascular Training', 'Strength Training']).to_a
             elsif calculated_bmi > 15 && calculated_bmi < 21
                 suggested_categories = Category.where(category_name: ['Endurance Training', 'Flexibility and Mobility Training']).to_a
