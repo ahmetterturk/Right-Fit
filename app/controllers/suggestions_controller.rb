@@ -34,10 +34,4 @@ class SuggestionsController < ApplicationController
         weight = user_profile.weight 
         bmi = (weight / ((height / 100) ** 2))
     end
-
-    def get_programs(category)
-        category.each do |category|
-            category.programs
-        end
-    end
 end
