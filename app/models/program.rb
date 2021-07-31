@@ -13,4 +13,5 @@ class Program < ApplicationRecord
 
     # validates :title, :description, :duration, :content, :category_id, :image, presence: true
 
+    
 end
