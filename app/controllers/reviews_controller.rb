@@ -1,24 +1,17 @@
 class ReviewsController < ApplicationController
-
+    before_action :authenticate_user!
+    
     def create
+        @program = Program.find(params[:program_id])
+        # @review = @program.reviews_to_receive.create(review_params)
         @review = Review.new(review_params)
-        @review.user = current_user 
-        @review.program = Program.find(params[:id])
-        if @review.save 
-            redirect_to program_path(@program)
-        else 
-            render plain: "Oops, comment could not be made"
-        end
-    end 
-
-
-    def delete
-        program = Program.find(params[:id])
-        @review = Review.find_by(user: current_user, program: program )
-        @review.destroy
+        @review.user = current_user
+        @review.program = @program
+        @review.save
+        redirect_to program_path(@program)
     end
 
-    private 
+    private
     def review_params
         params.require(:review).permit(:content, :title, :rating)
     end

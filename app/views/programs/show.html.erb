@@ -17,7 +17,8 @@
 
 <% if @program.coach == current_user %>
     <%= link_to 'Edit', edit_program_path(@program), class: 'btn btn-warning' %>
-    <%= button_to 'Delete', delete_program_path(@program), method: :delete, class: 'btn btn-danger'%>
+    <%# <%= button_to 'Delete', delete_program_path(@program), method: :delete, class: 'btn btn-danger'%> %>
+    <%= button_to 'Delete', program_path(@program), method: :delete, class: 'btn btn-danger'%>
 <% else %>
     <% if user_signed_in? %>
         <% if current_user.programs_to_attend.include?(@program) %>
@@ -28,4 +29,30 @@
     <% else %>
         <%= button_to 'Purchase', client_programs_path(user: current_user, program: @program), class: 'btn btn-primary', method: :post %>
     <% end %>
+<% end %>
+
+
+<h2>Reviews</h2>
+<p>==============================</p>
+<% @program.reviews_to_receive.each do |review| %>
+
+    <p>Commenter: <%= review.user.first_name %> <%= review.user.last_name %></p>
+    <p>Content: <%= review.content %></p>
+    <p>Rating: <%= review.rating %></p>
+<% end %>
+<p>==============================</p>
+
+
+
+
+<%= form_with model: [@program, @program.reviews_to_receive.build] do |form| %>
+
+    <%= form.label :content, "Content:" %><br>
+    <%= form.text_area :content %><br>
+
+    <%= form.label :rating, "Rating:" %><br>
+    <%= form.number_field :rating, min: 0, max: 10 %><br>
+
+    <%= form.submit %>
+
 <% end %>
