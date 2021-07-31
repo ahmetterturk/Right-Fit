@@ -31,4 +31,8 @@ Rails.application.routes.draw do
   post '/client_programs', to: 'client_programs#create', as: 'client_programs'
   delete '/client_programs/:id', to: 'client_programs#leave_program', as: 'leave_program'
 
+  #reviews
+  post '/reviews', to: 'reviews#create', as: 'reviews'
+  delete '/reviews/:id', to: 'reviews#delete', as: 'delete_comment'
+
 end

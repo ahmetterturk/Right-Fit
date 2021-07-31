@@ -2,9 +2,7 @@ class ClientProgramsController < ApplicationController
     before_action :authenticate_user!
 
     def create 
-        # program = Program.find(params[:program])
         program = program(params[:program])
-        # if !current_user.programs_to_attend.include?(program)
         if !purchased?(program)
             @client_programs = ClientsProgram.create(user: current_user, program: program)
             redirect_to user_page_path(current_user)
@@ -15,11 +13,9 @@ class ClientProgramsController < ApplicationController
 
     def leave_program
         program = program(params[:id])
-        # current_user.programs_to_attend.delete(program) if current_user.programs_to_attend.include?(program)
         current_user.programs_to_attend.delete(program) if purchased?(program)
         redirect_to user_page_path
     end
-
 
     private
     def purchased?(program)
