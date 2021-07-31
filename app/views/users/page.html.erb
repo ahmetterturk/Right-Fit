@@ -1,0 +1,59 @@
+<h1><%= current_user.first_name %> <%= current_user.last_name %></h1>
+
+
+<h2>Measures</h2>
+<% if current_user.profile %>
+    <p>Age: <%= current_user.profile.age %></p> 
+    <p>Height: <%= current_user.profile.height %></p> 
+    <p>Weight: <%= current_user.profile.weight %></p> 
+    <p>Body Fat Percentage: <%= current_user.profile.body_fat_percentage %></p> 
+    <p>User ID:<%= current_user.profile.user_id %></p>
+    <p>BMI: <%= @bmi %></p>
+    <%= link_to "Edit Profile", edit_profile_path %>
+    <%= button_to "Delete Profile", current_user.profile, method: :delete %>
+<% else %>
+    You don't have a body profile. create a profile 
+    <%= link_to "Create Profile", new_profile_path %>
+<% end %>
+
+
+<h2>Coached Programs</h2>
+<div class='container'>
+    <div class='row'>
+        <% @coached_programs.each do |program| %>
+            <div class="card" style="width: 18rem;">
+                <% if program.image.attached? %>
+                    <%= image_tag program.image, class: 'card-img-top' %>
+                <% else %>
+                    <%= image_tag "blank-program.jpg", class: 'card-img-top' %>
+                <% end %>
+                <div class="card-body">
+                    <h5 class="card-title"><%= program.title %></h5>
+                    <p class="card-text"><%= program.description %></p>
+                    <%= link_to 'View Program', program_path(program.id), class: 'btn btn-primary' %>
+                </div>
+            </div>
+        <% end %>
+    </div>
+</div>
+
+
+<h2>Attended Programs</h2>
+<div class='container'>
+    <div class='row'>
+        <% @attended_programs.each do |program| %>
+            <div class="card" style="width: 18rem;">
+                <% if program.image.attached? %>
+                    <%= image_tag program.image, class: 'card-img-top' %>
+                <% else %>
+                    <%= image_tag "blank-program.jpg", class: 'card-img-top' %>
+                <% end %>
+                <div class="card-body">
+                    <h5 class="card-title"><%= program.title %></h5>
+                    <p class="card-text"><%= program.description %></p>
+                    <%= link_to 'View Program', program_path(program.id), class: 'btn btn-primary' %>
+                </div>
+            </div>
+        <% end %>
+    </div>
+</div>

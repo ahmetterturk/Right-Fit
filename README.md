@@ -13,3 +13,9 @@ rails g model Review title content:text rating:integer user:references program:r
 rails g model Profile age:date height:float weight:float body_fat_percentage:integer user:references
 
 rails g migration AddCategoryIdToPrograms category:references
+
+
+
+delete problem 
+application.js 
+environment.js

@@ -1,0 +1,31 @@
+<h1><%= @program.title %></h1>
+
+<p>Description: <%= @program.description %></p>
+<p>Duration: <%= @program.duration %></p>
+<p>Content: <%= @program.content %></p>
+<p>Coach: <%= @program.coach.first_name %> <%= @program.coach.last_name %></p>
+<p>Category: <%= @program.category.category_name %></p>
+<p>Price: <%= @program.price %></p>
+
+
+<% if @program.image.attached? %>
+    <%= image_tag @program.image, class: 'show-page-image' %>
+<% else %>
+    <%= image_tag "blank-program.jpg", class: 'show-page-image' %>
+<% end %>
+
+
+<% if @program.coach == current_user %>
+    <%= link_to 'Edit', edit_program_path(@program), class: 'btn btn-warning' %>
+    <%= button_to 'Delete', delete_program_path(@program), method: :delete, class: 'btn btn-danger'%>
+<% else %>
+    <% if user_signed_in? %>
+        <% if current_user.programs_to_attend.include?(@program) %>
+            <%= button_to 'Leave Class', leave_program_path(@program), method: :delete, class: 'btn btn-danger' %>
+        <% else %>
+            <%= button_to 'Purchase', client_programs_path(user: current_user, program: @program), class: 'btn btn-primary', method: :post %>
+        <% end %>
+    <% else %>
+        <%= button_to 'Purchase', client_programs_path(user: current_user, program: @program), class: 'btn btn-primary', method: :post %>
+    <% end %>
+<% end %>
