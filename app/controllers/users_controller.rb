@@ -1,11 +1,16 @@
 class UsersController < ApplicationController
-    # include BMI 
 
-
-    def page
+    def self_page
         @bmi = calculated_bmi
         @coached_programs = current_user.programs_to_coach.all
         @attended_programs = current_user.programs_to_attend.all
+    end
+
+    def coach_page
+        @program = Program.find(params[:id])
+        coach_id = @program.coach.id
+        @coach = User.find(coach_id)
+        @coached_programs = @coach.programs_to_coach.all
     end
 
 

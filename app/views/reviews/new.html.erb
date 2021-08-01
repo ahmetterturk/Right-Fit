@@ -1,0 +1,10 @@
+<%= form_with model: @review do |form| %>
+    
+    <%= form.label :content, "Content:" %><br>
+    <%= form.text_area :description %><br>
+
+    <%= form.label :rating, "Rating:" %><br>
+    <%= form.number_field :rating, min: 0, max: 10 %><br>
+
+    <%= form.submit %>
+<% end %>
