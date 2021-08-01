@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   devise_for :users
-  root "welcome#index"
+  root "programs#index"
 
   # programs
   # get '/programs', to: 'programs#index', as:'programs'
@@ -12,12 +12,14 @@ Rails.application.routes.draw do
   # # delete '/programs/:id', to: 'programs#delete'
   # delete '/programs/:id', to: 'programs#delete', as: 'delete_program'
   
+  # programs and reviews
   resources :programs do 
     resources :reviews 
   end
 
   # users
-  get '/users/:id', to: 'users#page', as: 'user_page'
+  get '/users/:id', to: 'users#self_page', as: 'user_page'
+  get '/programs/:id/coach', to: 'users#coach_page', as: 'program_coach_page'
 
   # profiles
   get '/profiles', to: 'programs#index', as: 'profiles'

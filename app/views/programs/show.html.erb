@@ -1,3 +1,4 @@
+
 <h1><%= @program.title %></h1>
 
 <p>Description: <%= @program.description %></p>
@@ -14,10 +15,13 @@
     <%= image_tag "blank-program.jpg", class: 'show-page-image' %>
 <% end %>
 
+<% if current_user != @program.coach %>
+    <%= link_to "View Coach Page", program_coach_page_path, class: 'btn btn-info' %>
+<% end %>
+
 
 <% if @program.coach == current_user %>
     <%= link_to 'Edit', edit_program_path(@program), class: 'btn btn-warning' %>
-    <%# <%= button_to 'Delete', delete_program_path(@program), method: :delete, class: 'btn btn-danger'%> %>
     <%= button_to 'Delete', program_path(@program), method: :delete, class: 'btn btn-danger'%>
 <% else %>
     <% if user_signed_in? %>
@@ -31,6 +35,7 @@
     <% end %>
 <% end %>
 
+<br><br><br>
 
 <h2>Reviews</h2>
 <% @program.reviews_to_receive.each do |review| %>
@@ -44,14 +49,17 @@
     <% end %>
 <% end %>
 
+<br><br><br>
 
-<%= form_with model: [@program, @program.reviews_to_receive.build] do |form| %>
+<% if user_signed_in? %>
+    <%= form_with model: [@program, @program.reviews_to_receive.build] do |form| %>
 
-    <%= form.label :content, "Content:" %><br>
-    <%= form.text_area :content %><br>
+        <%= form.label :content, "Content:" %><br>
+        <%= form.text_area :content %><br>
 
-    <%= form.label :rating, "Rating:" %><br>
-    <%= form.number_field :rating, min: 0, max: 10 %><br>
+        <%= form.label :rating, "Rating:" %><br>
+        <%= form.number_field :rating, min: 0, max: 10 %><br>
 
-    <%= form.submit %>
+        <%= form.submit %>
+    <% end %>
 <% end %>
