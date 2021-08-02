@@ -2,6 +2,13 @@ class PaymentsController < ApplicationController
     before_action :authenticate_user!
     def create
         @program = Program.find(params[:program])
+
+        if ENV['RAILS_ENV'] == 'development'
+            root_path = 'http://localhost:3000'
+        else
+            root_path = ENV['ROOT_PATH']
+        end
+
         Stripe.api_key = Rails.application.credentials.dig(:stripe, :secret_key)        
         session = Stripe::Checkout::Session.create({
             payment_method_types: ['card'],
@@ -16,15 +23,14 @@ class PaymentsController < ApplicationController
                 quantity: 1,
             }],
             mode: 'payment',
-            success_url: "http://localhost:3000#{payment_success_path}?program=#{@program.id}&payment=success",
-            cancel_url: "http://localhost:3000/programs/#{@program.id}",
+            success_url: "#{root_path}#{payment_success_path}?program=#{@program.id}&payment=success",
+            cancel_url: "#{root_path}/programs/#{@program.id}",
         })
         redirect_to session.url
     end
 
     def success
         @program = Program.find(params[:program])
-        puts params[:payment]
         if params[:payment] == "success"
             ClientsProgram.create(user: current_user, program: @program)
         end
