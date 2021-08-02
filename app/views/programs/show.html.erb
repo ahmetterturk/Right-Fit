@@ -22,19 +22,16 @@
 
 <% if @program.coach == current_user %>
     <%= link_to 'Edit', edit_program_path(@program), class: 'btn btn-warning' %>
-    <%= button_to 'Delete', program_path(@program), method: :delete, class: 'btn btn-danger'%>
+    <%= link_to 'Delete', program_path(@program), method: :delete, class: 'btn btn-danger'%>
 <% else %>
     <% if user_signed_in? %>
         <% if current_user.programs_to_attend.include?(@program) %>
-            <%= button_to 'Leave Class', leave_program_path(@program), method: :delete, class: 'btn btn-danger' %>
+            <%= link_to 'Leave Class', leave_program_path(@program), method: :delete, class: 'btn btn-danger' %>
         <% else %>
-            <%# <%= button_to 'Purchase', client_programs_path(user: current_user, program: @program), class: 'btn btn-primary', method: :post %> %>
-            <%# <button type="submit">Checkout</button> %>
-            <%= button_to 'Purchase', payments_path(user: current_user, program: @program), class: 'btn btn-primary', method: :post %>
+            <%= link_to 'Purchase', payments_path(user: current_user, program: @program), class: 'btn btn-primary', method: :post %>
         <% end %>
     <% else %>
-        <%# <%= button_to 'Purchase', client_programs_path(user: current_user, program: @program), class: 'btn btn-primary', method: :post %> %>
-        <%= button_to 'Purchase', payments_path(user: current_user, program: @program), class: 'btn btn-primary', method: :post %>
+        <%= link_to 'Purchase', payments_path(user: current_user, program: @program), class: 'btn btn-primary', method: :post %>
     <% end %>
 <% end %>
 
@@ -48,7 +45,7 @@
     <p>Rating: <%= review.rating %></p>
 
     <% if review.user == current_user %>
-        <%= button_to 'Delete', [review.program, review], method: :delete, class: 'btn btn-danger', data: { confirm: "Are you sure you want to delete comment?"}%>
+        <%= link_to 'Delete', [review.program, review], method: :delete, class: 'btn btn-danger', data: { confirm: "Are you sure you want to delete comment?"}%>
     <% end %>
 <% end %>
 
