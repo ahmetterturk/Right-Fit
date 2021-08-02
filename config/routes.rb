@@ -34,6 +34,13 @@ Rails.application.routes.draw do
   get '/suggestions', to: 'suggestions#index', as: 'suggestions'
 
   # client_programs
-  post '/client_programs', to: 'client_programs#create', as: 'client_programs'
-  delete '/client_programs/:id', to: 'client_programs#leave_program', as: 'leave_program'
+  # post '/client_programs', to: 'client_programs#create', as: 'client_programs'
+  # delete '/client_programs/:id', to: 'client_programs#leave_program', as: 'leave_program'
+
+  # payments
+  resources :payments, only: [:create]
+  get 'payment/success', to: 'payments#success'
+  # get 'payment/cancel', to: 'payments#cancel'
+  delete '/client_programs/:id', to: 'payments#leave_program', as: 'leave_program'
+
 end

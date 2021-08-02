@@ -33,7 +33,8 @@ gem 'bootsnap', '>= 1.4.2', require: false
 gem 'devise'
 gem 'faker', :git => 'https://github.com/faker-ruby/faker.git', :branch => 'master'
 gem 'jquery-rails'
-
+gem "aws-sdk-s3", "~> 1.97"
+gem 'stripe'
 
 
 group :development, :test do
@@ -60,5 +61,3 @@ end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
-
-gem "aws-sdk-s3", "~> 1.97"

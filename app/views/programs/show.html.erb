@@ -28,10 +28,13 @@
         <% if current_user.programs_to_attend.include?(@program) %>
             <%= button_to 'Leave Class', leave_program_path(@program), method: :delete, class: 'btn btn-danger' %>
         <% else %>
-            <%= button_to 'Purchase', client_programs_path(user: current_user, program: @program), class: 'btn btn-primary', method: :post %>
+            <%# <%= button_to 'Purchase', client_programs_path(user: current_user, program: @program), class: 'btn btn-primary', method: :post %> %>
+            <%# <button type="submit">Checkout</button> %>
+            <%= button_to 'Purchase', payments_path(user: current_user, program: @program), class: 'btn btn-primary', method: :post %>
         <% end %>
     <% else %>
-        <%= button_to 'Purchase', client_programs_path(user: current_user, program: @program), class: 'btn btn-primary', method: :post %>
+        <%# <%= button_to 'Purchase', client_programs_path(user: current_user, program: @program), class: 'btn btn-primary', method: :post %> %>
+        <%= button_to 'Purchase', payments_path(user: current_user, program: @program), class: 'btn btn-primary', method: :post %>
     <% end %>
 <% end %>
 
