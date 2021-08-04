@@ -2,7 +2,8 @@ class ProgramsController < ApplicationController
     before_action :authenticate_user!, only: [:new, :edit, :update, :delete]
 
     def index
-        @programs = Program.all 
+        @q = Program.ransack(params[:q])
+        @programs = @q.result(distinct: true)
     end
 
     def show

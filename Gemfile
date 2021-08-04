@@ -35,6 +35,8 @@ gem 'faker', :git => 'https://github.com/faker-ruby/faker.git', :branch => 'mast
 gem 'jquery-rails'
 gem "aws-sdk-s3", "~> 1.97"
 gem 'stripe'
+gem 'ransack'
+
 
 
 group :development, :test do
