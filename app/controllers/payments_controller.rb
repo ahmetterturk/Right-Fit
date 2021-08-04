@@ -17,6 +17,7 @@ class PaymentsController < ApplicationController
                 currency: 'aud',
                 product_data: {
                     name: @program.title,
+                    images: [@program.image.service_url],
                 },
                 unit_amount: @program.price.to_i * 100,
                 },
