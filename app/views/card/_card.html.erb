@@ -1,0 +1,19 @@
+<div class='container'>
+    <div class='row'>
+        <% programs.each do |program| %>
+            <div class="card" style="width: 18rem;">
+                <% if program.image.attached? %>
+                    <%= image_tag program.image, class: 'card-img-top' %>
+                <% else %>
+                    <%= image_tag "blank-program.jpg", class: 'card-img-top' %>
+                <% end %>
+                <div class="card-body">
+                    <h5 class="card-title"><%= program.title %></h5>
+                    <p class="card-text"><%= program.description %></p>
+                    <p class="card-text"><%= program.category.category_name %></p>
+                    <%= link_to 'View Program', program_path(program.id), class: 'btn btn-primary' %>
+                </div>
+            </div>
+        <% end %>
+    </div>
+</div>

@@ -35,31 +35,8 @@
     <% end %>
 <% end %>
 
-<br><br><br>
-
 <h2>Reviews</h2>
-<% @program.reviews_to_receive.each do |review| %>
+<%= render 'reviews/reviews' %>
 
-    <p>Commenter: <%= review.user.first_name %> <%= review.user.last_name %></p>
-    <p>Content: <%= review.content %></p>
-    <p>Rating: <%= review.rating %></p>
-
-    <% if review.user == current_user %>
-        <%= link_to 'Delete', [review.program, review], method: :delete, class: 'btn btn-danger', data: { confirm: "Are you sure you want to delete comment?"}%>
-    <% end %>
-<% end %>
-
-<br><br><br>
-
-<% if user_signed_in? %>
-    <%= form_with model: [@program, @program.reviews_to_receive.build] do |form| %>
-
-        <%= form.label :content, "Content:" %><br>
-        <%= form.text_area :content %><br>
-
-        <%= form.label :rating, "Rating:" %><br>
-        <%= form.number_field :rating, min: 0, max: 10 %><br>
-
-        <%= form.submit %>
-    <% end %>
-<% end %>
+<h3>Add Review</h3>
+<%= render 'reviews/new' %>

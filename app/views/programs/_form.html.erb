@@ -1,0 +1,30 @@
+<div class='row justify-content-center'>
+    <div style="width: 500px;">
+        <%= form_with model: @program do |form| %>
+            <%= form.label :title, "Title:" %>
+            <%= form.text_field :title, class:"form-control" %>
+            
+            <%= form.label :description, "Description:" %>
+            <%= form.text_area :description, class:"form-control"%>
+
+            <%= form.label :price, "Price:" %>
+            <%= form.number_field :price, class:"form-control", min: 0 %>
+
+            <%= form.label :duration, "Duration:" %>
+            <%= form.number_field :duration, class:"form-control", min: 0 %>
+
+            <%= form.label :content, "Content:" %>
+            <%= form.text_area :content, class:"form-control" %>
+
+            <%= form.label :category_id, "Category:" %>
+            <%= form.select(:category_id, @categories.map {|item| [item.category_name, item.id.to_i]}, {}, {class:"form-select"}) %>
+
+            <%= form.label :image, "Image:" %>
+            <%= form.file_field :image, class:"form-control" %>
+
+            <div class="d-grid gap-2">
+                <%= form.submit "Sign up", class:"btn btn-primary" %>
+            </div>
+        <% end %>
+    </div>
+</div>
