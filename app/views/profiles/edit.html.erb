@@ -1,19 +1,17 @@
-<h1>Edit User Body Profile</h1>
+<div class='row justify-content-center'>
+    <div style="width: 500px;">
+        <h1>Edit User Body Profile</h1>
+        <%= form_with model: @profile do |form| %>
+            <%= form.label :age, "Age:" %><br>
+            <%= form.date_field :age, class:"form-control" %><br>
+            
+            <%= form.label :height, "Height:" %><br>
+            <%= form.number_field :height, class:"form-control" %><br>
 
-<%= form_with model: @profile do |form| %>
+            <%= form.label :weight, "Weight:" %><br>
+            <%= form.number_field :weight, class:"form-control" %><br>
 
-    <%= form.label :age, "Age:" %><br>
-    <%= form.date_field :age %><br>
-    
-    <%= form.label :height, "Height:" %><br>
-    <%= form.number_field :height %><br>
-
-    <%= form.label :weight, "Weight:" %><br>
-    <%= form.number_field :weight %><br>
-
-    <%= form.label :body_fat_percentage, "Body Fat Percentage:" %><br>
-    <%= form.number_field :body_fat_percentage %><br>
-
-    <%= form.submit %>
-
-<% end %>
+            <%= form.submit %>
+        <% end %>
+    </div>
+</div>

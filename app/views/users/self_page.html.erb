@@ -10,7 +10,7 @@
     <p>User ID:<%= current_user.profile.user_id %></p>
     <p>BMI: <%= @bmi %></p>
     <%= link_to "Edit Profile", edit_profile_path %>
-    <%= link_to "Delete Profile", current_user.profile, method: :delete %>
+    <%= link_to "Delete Profile", current_user.profile, method: :delete, data: { confirm: "Are you sure?"} %>
 <% else %>
     You don't have a body profile. create a profile 
     <%= link_to "Create Profile", new_profile_path %>
