@@ -6,14 +6,15 @@ class SuggestionsController < ApplicationController
 
         if current_user.profile 
             if calculated_bmi > 30
-                suggested_categories = Category.where(category_name: ['Cardiovascular Training']).to_a
-            elsif calculated_bmi > 20 && calculated_bmi < 30
-                suggested_categories = Category.where(category_name: ['Cardiovascular Training', 'Strength Training']).to_a
-            elsif calculated_bmi > 15 && calculated_bmi < 21
-                suggested_categories = Category.where(category_name: ['Endurance Training', 'Flexibility and Mobility Training']).to_a
+                array = ['Cardiovascular Training']
+            elsif calculated_bmi > 21 && calculated_bmi < 30
+                array = ['Cardiovascular Training', 'Strength Training']
+            elsif calculated_bmi > 16 && calculated_bmi < 21
+                array = ['Endurance Training', 'Flexibility and Mobility Training']
             elsif calculated_bmi < 16
-                suggested_categories = Category.where(category_name: ['Flexibility and Mobility Training']).to_a
+                array = ['Flexibility and Mobility Training']
             end
+            suggested_categories = set_categories(array)
 
             suggested_categories.each do |category|
                 category.programs.each do |program| 
@@ -33,5 +34,9 @@ class SuggestionsController < ApplicationController
         height = user_profile.height 
         weight = user_profile.weight 
         bmi = (weight / ((height / 100) ** 2))
+    end
+
+    def set_categories(list)
+        Category.where(category_name: list).to_a
     end
 end
