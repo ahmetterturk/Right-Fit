@@ -1,5 +1,6 @@
 class PaymentsController < ApplicationController
     before_action :authenticate_user!
+    
     def create
         @program = Program.find(params[:program])
 
@@ -11,7 +12,6 @@ class PaymentsController < ApplicationController
             Stripe.api_key = Rails.configuration.stripe[:secret_key]
         end
 
-              
         session = Stripe::Checkout::Session.create({
             payment_method_types: ['card'],
             line_items: [{
@@ -45,6 +45,6 @@ class PaymentsController < ApplicationController
         redirect_to user_page_path
     end
 
-    def cancel 
-    end
+    # def cancel 
+    # end
 end

@@ -1,5 +1,7 @@
 class ProgramsController < ApplicationController
     before_action :authenticate_user!, only: [:new, :edit, :update, :delete]
+    before_action :set_program, only: [:show, :edit, :update, :destroy]
+    before_action :set_categories, only: [:new, :create, :edit]
 
     def index
         @q = Program.ransack(params[:q])
@@ -7,16 +9,13 @@ class ProgramsController < ApplicationController
     end
 
     def show
-        @program = Program.find(params[:id])
     end
 
     def new
-        @categories = Category.all
         @program = Program.new
     end
 
     def create
-        @categories = Category.all
         @program = Program.new(get_program_params)
         @program.coach = current_user
         if @program.save
@@ -28,12 +27,9 @@ class ProgramsController < ApplicationController
     end
 
     def edit
-        @categories = Category.all
-        @program = Program.find(params[:id])
     end
 
     def update
-        @program = Program.find(params[:id])
         if @program.update(get_program_params)
             redirect_to program_path(@program.id)
         else
@@ -42,7 +38,6 @@ class ProgramsController < ApplicationController
     end
 
     def destroy
-        @program = Program.find(params[:id])
         @program.destroy
         redirect_to programs_path
     end
@@ -52,4 +47,11 @@ class ProgramsController < ApplicationController
         params.require(:program).permit(:title, :description, :duration, :content, :price, :category_id, :coach_id, :image)
     end
 
+    def set_program
+        @program = Program.find(params[:id])
+    end 
+
+    def set_categories
+        @categories = Category.all
+    end 
 end

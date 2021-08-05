@@ -13,7 +13,6 @@ class UsersController < ApplicationController
         @coached_programs = @coach.programs_to_coach.all
     end
 
-
     private 
     def calculated_bmi
         user_profile = current_user.profile

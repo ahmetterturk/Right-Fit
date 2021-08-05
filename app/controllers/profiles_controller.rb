@@ -1,13 +1,11 @@
 class ProfilesController < ApplicationController
+    before_action :set_profile, only: [:edit, :update, :delete]
 
     def index
-        # @profiles = Profile.all
     end
 
-    def show 
-        # @profile = Profile.find(params[:id])
+    def show
     end
-
 
     def new
         @profile = Profile.new
@@ -18,29 +16,23 @@ class ProfilesController < ApplicationController
         @profile.user = current_user
         if @profile.save 
             redirect_to user_page_path(current_user)
-            # redirect_to suggestions_path
         else
             render 'new'
         end
     end
 
-    def edit 
-        @profile = current_user.profile 
+    def edit
     end
 
-    def update 
-        @profile = current_user.profile 
+    def update
         if @profile.update(get_program_params)
-            # redirect_to user_page_path(current_user)
             redirect_to profile_path(current_user)
         else
             render 'edit'
         end
     end
 
-    # did not test this yet
-    def delete 
-        @profile = current_user.profile 
+    def delete
         @profile.destroy
         redirect_to user_page_path(current_user)
     end
@@ -48,5 +40,9 @@ class ProfilesController < ApplicationController
     private
     def get_program_params
         params.require(:profile).permit(:age, :height, :weight, :body_fat_percentage)
+    end
+
+    def set_profile
+        @profile = current_user.profile 
     end
 end
