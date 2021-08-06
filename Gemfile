@@ -36,6 +36,7 @@ gem 'jquery-rails'
 gem "aws-sdk-s3", "~> 1.97"
 gem 'stripe'
 gem 'ransack'
+gem 'cancancan'
 
 
 

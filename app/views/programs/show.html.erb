@@ -20,9 +20,10 @@
 <% end %>
 
 
-<% if @program.coach == current_user %>
+<%# <% if @program.coach == current_user %> %>
+<% if can? :manage, @program %>
     <%= link_to 'Edit', edit_program_path(@program), class: 'btn btn-warning' %>
-    <%= link_to 'Delete', program_path(@program), method: :delete, class: 'btn btn-danger'%>
+    <%= link_to 'Delete', program_path(@program), method: :delete, class: 'btn btn-danger', data: { confirm: "Are you sure?"}%>
 <% else %>
     <% if user_signed_in? %>
         <% if current_user.programs_to_attend.include?(@program) %>
