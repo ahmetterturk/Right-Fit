@@ -10,6 +10,4 @@ class User < ApplicationRecord
   has_many :programs_to_coach, class_name: "Program", foreign_key: "coach_id", dependent: :destroy
   has_one :profile, dependent: :destroy
   has_many :reviews_to_make, class_name: "Review", foreign_key: "user_id", dependent: :destroy
-
-
 end
