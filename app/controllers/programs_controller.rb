@@ -21,7 +21,8 @@ class ProgramsController < ApplicationController
         if @program.save
             redirect_to program_path(@program.id)
         else
-            flash.alert = @program.errors.full_messages.first
+            # flash.alert = @program.errors.full_messages.first
+            flash.alert = @program.errors.full_messages
             redirect_to new_program_path 
         end
     end
@@ -33,7 +34,8 @@ class ProgramsController < ApplicationController
         if @program.update(get_program_params)
             redirect_to program_path(@program.id)
         else
-            flash.alert = @program.errors.full_messages.first
+            # flash.alert = @program.errors.full_messages.first
+            flash.alert = @program.errors.full_messages
             redirect_to edit_program_path
         end
     end

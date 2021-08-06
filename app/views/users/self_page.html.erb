@@ -2,7 +2,7 @@
 
 <h2>Measures</h2>
 <% if current_user.profile %>
-    <p>Age: <%= current_user.profile.age %></p> 
+    <p>Age: <%= @client_age %></p> 
     <p>Height: <%= current_user.profile.height %></p> 
     <p>Weight: <%= current_user.profile.weight %></p>
     <p>BMI: <%= @bmi %></p>

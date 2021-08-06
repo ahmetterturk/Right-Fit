@@ -4,6 +4,9 @@ class UsersController < ApplicationController
         @bmi = calculated_bmi
         @coached_programs = current_user.programs_to_coach.all
         @attended_programs = current_user.programs_to_attend.all
+        if !current_user.profile.nil?
+            @client_age = Time.now.year - current_user.profile.age.year
+        end
     end
 
     def coach_page
