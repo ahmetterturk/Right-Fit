@@ -37,7 +37,7 @@ gem "aws-sdk-s3", "~> 1.97"
 gem 'stripe'
 gem 'ransack'
 gem 'cancancan'
-
+gem 'rails_admin'
 
 
 group :development, :test do
