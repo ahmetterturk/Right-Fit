@@ -10,6 +10,9 @@
           <%= link_to "Add Program", new_program_path, class:"nav-link active" %>
         </li>
         <% if user_signed_in? %>
+            <% if current_user.admin %>
+              <%= link_to "Admin Dashboard", rails_admin_path, class:"nav-link active" %>
+            <% end %>
           <li class="nav-item">
             <%= link_to "#{current_user.first_name} #{current_user.last_name}", user_page_path(current_user), class:"nav-link active" %>
           </li>
