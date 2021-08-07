@@ -9,7 +9,7 @@ class ProgramsController < ApplicationController
     end
 
     def show
-        @reviews = @program.reviews_to_receive.all.includes(:user)
+        @reviews = @program.reviews_to_receive.all.includes(:user, :program)
         # @reviews = @program.reviews_to_receive.all
     end
 
