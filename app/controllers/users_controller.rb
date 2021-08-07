@@ -2,8 +2,8 @@ class UsersController < ApplicationController
 
     def self_page
         @bmi = calculated_bmi
-        @coached_programs = current_user.programs_to_coach.all
-        @attended_programs = current_user.programs_to_attend.all
+        @coached_programs = current_user.programs_to_coach.all.includes(:category, image_attachment: :blob)
+        @attended_programs = current_user.programs_to_attend.all.includes(:category, image_attachment: :blob)
         if !current_user.profile.nil?
             @client_age = Time.now.year - current_user.profile.age.year
         end
@@ -14,7 +14,7 @@ class UsersController < ApplicationController
         coach_id = @program.coach.id
         @coach = User.find(coach_id)
         # @coached_programs = @coach.programs_to_coach.all
-        @coached_programs = @coach.programs_to_coach.all.includes(:coach, :category, image_attachment: :blob)
+        @coached_programs = @coach.programs_to_coach.all.includes(:category, image_attachment: :blob)
     end
 
     private 
