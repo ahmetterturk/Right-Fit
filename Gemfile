@@ -38,6 +38,8 @@ gem 'stripe'
 gem 'ransack'
 gem 'cancancan'
 gem 'rails_admin'
+gem 'bullet', group: 'development'
+
 
 
 group :development, :test do

@@ -13,7 +13,8 @@ class UsersController < ApplicationController
         @program = Program.find(params[:id])
         coach_id = @program.coach.id
         @coach = User.find(coach_id)
-        @coached_programs = @coach.programs_to_coach.all
+        # @coached_programs = @coach.programs_to_coach.all
+        @coached_programs = @coach.programs_to_coach.all.includes(:coach, :category, image_attachment: :blob)
     end
 
     private 

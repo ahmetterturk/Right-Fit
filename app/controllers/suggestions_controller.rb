@@ -18,8 +18,8 @@ class SuggestionsController < ApplicationController
             suggested_categories = set_categories(array)
 
             suggested_categories.each do |category|
-                category.programs.each do |program| 
-                    @programs << program 
+                category.programs.includes([image_attachment: :blob]).each do |program| 
+                    @programs << program
                 end 
             end
     
@@ -38,6 +38,7 @@ class SuggestionsController < ApplicationController
     end
 
     def set_categories(list)
-        Category.where(category_name: list).to_a
+        # Category.where(category_name: list).to_a
+        Category.where(category_name: list)
     end
 end
