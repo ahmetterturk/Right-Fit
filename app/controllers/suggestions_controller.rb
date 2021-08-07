@@ -14,6 +14,7 @@ class SuggestionsController < ApplicationController
             elsif calculated_bmi < 16
                 array = ['Flexibility and Mobility Training']
             end
+            
             suggested_categories = set_categories(array)
 
             suggested_categories.each do |category|

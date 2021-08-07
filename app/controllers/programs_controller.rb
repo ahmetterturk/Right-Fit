@@ -5,10 +5,13 @@ class ProgramsController < ApplicationController
 
     def index
         @q = Program.ransack(params[:q])
-        @programs = @q.result(distinct: true)
+        @programs = @q.result(distinct: true).includes(:coach, :category, image_attachment: :blob)
     end
 
     def show
+        @reviews = @program.reviews_to_receive.all.includes(:user, :program)
+        # @reviews = @program.reviews_to_receive.all.eager_load(:user, :program)
+        # @reviews = @program.reviews_to_receive.all
     end
 
     def new
@@ -51,10 +54,11 @@ class ProgramsController < ApplicationController
     end
 
     def set_program
-        @program = Program.find(params[:id])
+        # @program = Program.find(params[:id])
+        @program = Program.includes(:reviews_to_receive).find(params[:id])
     end 
 
     def set_categories
-        @categories = Category.all
+        @categories = Category.all.includes(:programs)
     end 
 end

@@ -1,4 +1,5 @@
-<% @program.reviews_to_receive.each do |review| %>
+<%# <% @program.reviews_to_receive.each do |review| %> %>
+<% @reviews.each do |review| %>
     <p>Commenter: <%= review.user.first_name %> <%= review.user.last_name %></p>
     <p>Content: <%= review.content %></p>
 
