@@ -13,6 +13,8 @@ class Program < ApplicationRecord
     validates :category_id, presence: true
     validate :image_format
 
+    scope :suggested_programs, -> (categories) { where(category: categories) } 
+    
     private
     def image_format
         if image.attached? && !image.content_type.in?(%w(image/jpeg image/jpg image/png))

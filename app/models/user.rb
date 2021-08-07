@@ -12,4 +12,6 @@ class User < ApplicationRecord
   validates :first_name, :last_name, presence: true
   validates :first_name, length: { maximum: 100 }
   validates :last_name, length: { maximum: 100 }
+
+  scope :admin, -> { where(admin: true) }
 end
