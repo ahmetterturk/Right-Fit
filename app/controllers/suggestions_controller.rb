@@ -6,7 +6,7 @@ class SuggestionsController < ApplicationController
             if calculated_bmi > 30
                 suggested_categories = Category.cardio
             elsif calculated_bmi > 21 && calculated_bmi < 30
-                suggested_categories = Category.cardio_and_flexbility
+                suggested_categories = Category.cardio_and_strength
             elsif calculated_bmi > 16 && calculated_bmi < 21
                 suggested_categories = Category.endurance_and_flexbility
             elsif calculated_bmi < 16
