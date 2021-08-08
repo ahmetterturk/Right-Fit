@@ -1,11 +1,25 @@
-<%= image_tag 'ropes.jpeg', style: 'width:100%', class: 'index-page-image' %>
+<div class='cover-image'> 
+</div>
 
-<%= search_form_for @q do |f| %>
-    <%= f.search_field :title_or_category_category_name_cont, placeholder: 'Search Programs' %>
-    <%= f.submit %>
-<% end %>
+<div class="suggestion-section">
+  <h2>Not sure where to start? let us make you a suggestion</h2>
+  <%= link_to "Make me a Suggestion", suggestions_path, class:'btn btn-primary'%>
+</div>
 
-<h2>Not sure where to start? let us make you a suggestion</h2>
-<%= link_to "Make me a Suggestion", suggestions_path, class:'btn btn-primary'%>
+<div class="search-bar">
+  <%= search_form_for @q do |f| %>
+    <div class="row justify-content-center">
+      <div class="col-lg-4 col-md-6 col-12">  
+          <%= f.search_field :title_or_category_category_name_cont, placeholder: 'Search Programs', class:"form-control search-bar-form" %>
+          <div class="d-grid gap-2">
+            <%= f.submit 'Search', class:'btn btn-primary search-bar-submit' %>
+          </div>
+      </div>
+    </div>
 
-<%= render 'card/card', programs: @programs %>
+  <% end %>
+</div>
+
+<div class="index-page-card">
+  <%= render 'card/card', programs: @programs %>
+</div>

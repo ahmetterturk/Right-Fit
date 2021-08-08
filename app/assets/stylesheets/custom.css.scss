@@ -1,15 +1,56 @@
 @import 'bootstrap/dist/css/bootstrap';
 
-.gap-2{
-    margin-top: 15px;
+body, html {
+    height: 100%;
 }
 
-// .btn-primary{
-//     background-color: rgb(125, 33, 133);
-//     border: rgb(101, 26, 108);
-// }
+.cover-image {
+    /* The image used */
+    background-image: url("/assets/ropes.jpeg");
+  
+    /* Determined height */
+    height: 60%;
+  
+    /* Center and scale the image nicely */
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
 
-// .btn-primary:hover{
-//     background-color: rgb(104, 29, 111);
-//     border: rgb(74, 19, 79);
-// }
+.suggestion-section{
+    text-align: center;
+    margin: 200px;
+}
+
+.search-bar{
+    text-align: center;
+    margin: 100px;
+}
+
+.search-bar-submit, .search-bar-form{
+    text-align: center;
+    height: 40px;
+    border-radius: 10px;
+}
+
+.card{
+    border: none;
+    border-radius: 15px;
+    width: 20rem;
+}
+
+.bg-white {
+    background-color: #f2f2f2!important;
+}
+
+.card-img-top {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+
+.index-page-card{
+    margin-top: 50px;
+}
+

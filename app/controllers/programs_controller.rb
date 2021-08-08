@@ -5,7 +5,7 @@ class ProgramsController < ApplicationController
 
     def index
         @q = Program.ransack(params[:q])
-        @programs = @q.result(distinct: true).includes(:category, image_attachment: :blob)
+        @programs = @q.result(distinct: true).limit(20).includes(:category, image_attachment: :blob)
     end
 
     def show

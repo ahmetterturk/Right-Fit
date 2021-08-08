@@ -1,3 +1,21 @@
 // Place all the styles related to the users controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
+
+body, html {
+    height: 100%;
+}
+
+.self-cover-image {
+    /* The image used */
+    // background-image: url("/assets/ropes.jpeg");
+    background-color: rgb(139, 180, 206);
+  
+    /* Determined height */
+    height: 50%;
+  
+    /* Center and scale the image nicely */
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
