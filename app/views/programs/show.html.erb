@@ -1,9 +1,19 @@
-
 <h1><%= @program.title %></h1>
+
+
+<%= @program.clients.count %>
+
+
+
 
 <p>Description: <%= @program.description %></p>
 <p>Duration: <%= @program.duration %></p>
-<p>Content: <%= @program.content %></p>
+<% if (user_signed_in? && current_user.programs_to_attend.include?(@program)) || (user_signed_in? && current_user.programs_to_coach.include?(@program)) %>
+    <p>Content: <%= @program.content %></p>
+<% else %>
+    <p>You have to purcahse this program</p>
+<% end %>
+
 <p>Coach: <%= @program.coach.first_name %> <%= @program.coach.last_name %></p>
 <p>Category: <%= @program.category.category_name %></p>
 <p>Price: <%= @program.price %></p>

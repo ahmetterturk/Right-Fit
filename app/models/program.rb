@@ -13,7 +13,11 @@ class Program < ApplicationRecord
     validates :category_id, presence: true
     validate :image_format
 
-    scope :suggested_programs, -> (categories) { where(category: categories) } 
+    scope :suggested_programs, -> (categories) { where(category: categories) }
+
+    # def self.purchased?
+    #     current_user.programs_to_attend.includes?(self)
+    # end 
     
     private
     def image_format
