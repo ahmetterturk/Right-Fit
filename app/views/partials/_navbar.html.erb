@@ -5,7 +5,7 @@
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
           <li class="nav-item">
             <%= link_to "Add Program", new_program_path, class:"nav-link active" %>
           </li>
@@ -13,9 +13,15 @@
               <% if current_user.admin %>
                 <%= link_to "Admin Dashboard", rails_admin_path, class:"nav-link active" %>
               <% end %>
-            <li class="nav-item">
-              <%= link_to "#{current_user.first_name} #{current_user.last_name}", user_page_path(current_user), class:"nav-link active" %>
-            </li>
+            <div class="dropdown">
+              <a class="nav-link active dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                <%= current_user.first_name %> <%= current_user.last_name %>
+              </a>
+              <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                <li><%= link_to "Profile", user_page_path(current_user), class:"dropdown-item" %></li>
+                <li><%= link_to "Edit Profile", edit_user_registration_path, class:"dropdown-item" %></li>
+              </ul>
+            </div>
             <li class="nav-item">
               <%= link_to 'Logout', destroy_user_session_path, method: :delete, class:"nav-link active" %>
             </li>
