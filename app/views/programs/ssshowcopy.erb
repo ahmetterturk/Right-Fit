@@ -1,0 +1,58 @@
+<div class='show-page-image' style="background-image: url(<%= @program.image.service_url %>)"> 
+
+</div>
+
+
+<h1><%= @program.title %></h1>
+
+
+<%= @program.clients.count %>
+
+
+
+
+<p>Description: <%= @program.description %></p>
+<p>Duration: <%= @program.duration %></p>
+<% if (user_signed_in? && current_user.programs_to_attend.include?(@program)) || (user_signed_in? && current_user.programs_to_coach.include?(@program)) %>
+    <p>Content: <%= @program.content %></p>
+<% else %>
+    <p>You have to purcahse this program</p>
+<% end %>
+
+<p>Coach: <%= @program.coach.first_name %> <%= @program.coach.last_name %></p>
+<p>Category: <%= @program.category.category_name %></p>
+<p>Price: <%= @program.price %></p>
+
+
+<% if @program.image.attached? %>
+    <%= image_tag @program.image, class: 'show-page-image' %>
+<% else %>
+    <%= image_tag "blank-program.jpg", class: 'show-page-image' %>
+<% end %>
+
+<% if current_user != @program.coach %>
+    <%= link_to "View Coach Page", program_coach_page_path, class: 'btn btn-info' %>
+<% end %>
+
+
+<%# <% if @program.coach == current_user %> %>
+<% if can? :manage, @program %>
+    <%= link_to 'Edit', edit_program_path(@program), class: 'btn btn-warning' %>
+    <%= link_to 'Delete', program_path(@program), method: :delete, class: 'btn btn-danger', data: { confirm: "Are you sure?"}%>
+<% else %>
+    <% if user_signed_in? %>
+        <% if current_user.programs_to_attend.include?(@program) %>
+            <%= link_to 'Leave Class', leave_program_path(@program), method: :delete, class: 'btn btn-danger' %>
+        <% else %>
+            <%= link_to 'Purchase', payments_path(user: current_user, program: @program), class: 'btn btn-primary', method: :post %>
+        <% end %>
+    <% else %>
+        <%= link_to 'Purchase', payments_path(user: current_user, program: @program), class: 'btn btn-primary', method: :post %>
+    <% end %>
+<% end %>
+
+<h2>Reviews</h2>
+<%= render 'reviews/reviews' %>
+
+<h3>Add Review</h3>
+<%= render 'reviews/new' %>

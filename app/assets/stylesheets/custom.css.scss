@@ -17,6 +17,29 @@ body, html {
     background-size: cover;
 }
 
+.show-page-image {
+    // background-image: url("/assets/ropes.jpeg");
+  
+    /* Determined height */
+    height: 40%;
+  
+    /* Center and scale the image nicely */
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.show-header-client-count{
+    text-align: center;
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+
+.blurry-text {
+    text-shadow: 0 0 10px rgb(0, 0, 0);
+    color: transparent;
+ }
+
 .suggestion-section{
     text-align: center;
     margin:  200px 50px;
@@ -60,4 +83,8 @@ body, html {
 .card-other{
     margin-left: 50px;
     // width: 15rem;
+}
+
+.review-section{
+    margin-top: 500px;
 }
