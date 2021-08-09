@@ -7,8 +7,8 @@ class Profile < ApplicationRecord
   validate :age_limit
 
   def age_limit
-    if age.present? && age.year > Time.now.year - 12
-      errors.add(:age, " must be 12 years or older to join")
+    if age.present? && age.year > Time.now.year - 15
+      errors.add(:age, " must be at least 15 years old to get a suggestion")
     end
   end
 end
