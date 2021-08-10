@@ -4,18 +4,32 @@
 
 body, html {
     height: 100%;
+    text-align: center;
 }
 
 .self-cover-image {
     /* The image used */
     // background-image: url("/assets/ropes.jpeg");
-    background-color: rgb(139, 180, 206);
+    background-color: rgb(176, 222, 250);
   
     /* Determined height */
-    height: 50%;
+    height: 30%;
   
     /* Center and scale the image nicely */
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.self-cover-image h1{
+    color: white;
+}
+
+h2{
+    margin-top: 50px;
+    margin-bottom: 50px;
 }

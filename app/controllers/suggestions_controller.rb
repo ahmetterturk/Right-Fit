@@ -3,14 +3,18 @@ class SuggestionsController < ApplicationController
 
     def index
         if current_user.profile 
-            if calculated_bmi > 30
+            if calculated_bmi > 27
                 suggested_categories = Category.cardio
-            elsif calculated_bmi > 21 && calculated_bmi < 30
+                @result = "Cardiovascular Training"
+            elsif calculated_bmi > 21 && calculated_bmi < 27
                 suggested_categories = Category.cardio_and_strength
+                @result = "Strength and Cardiovascular Training"
             elsif calculated_bmi > 16 && calculated_bmi < 21
                 suggested_categories = Category.endurance_and_flexbility
+                @result = "Endurance and Flexibility and Mobility Training"
             elsif calculated_bmi < 16
                 suggested_categories = Category.flexibility
+                @result = "Flexibility and Mobility Training"
             end
 
             @programs = Program.suggested_programs(suggested_categories).includes([:category, image_attachment: :blob])

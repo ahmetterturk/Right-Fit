@@ -10,15 +10,18 @@
   </div>
 
   <div class='row'>
-    <div class='col-md-6 col-12 mx-auto'>
-      <p>Description: <%= @program.description %></p>
-      <p>Duration: <%= @program.duration %></p>
-      <p>Coach: <%= @program.coach.first_name %> <%= @program.coach.last_name %></p>
-      <p>Category: <%= @program.category.category_name %></p>
-      <p>Price: <%= @program.price %></p>
+    <div class='col-md-6 col-12 show-description-duration'>
+      <h5>Description</h5>
+      <p><%= @program.description %></p>
+      <h5>Duration</h5>
+      <p><%= @program.duration %> Weeks</p>
+      <h5>Instructor</h5>
+      <p><%= @program.coach.first_name %> <%= @program.coach.last_name %></p>
+      <h5>Category</h5>
+      <p><%= @program.category.category_name %></p>
 
       <% if current_user != @program.coach %>
-          <%= link_to "View Coach Page", program_coach_page_path, class: 'btn btn-info' %>
+          <%= link_to "Instructor's Profile", program_coach_page_path, class: 'btn btn-outline-secondary' %>
       <% end %>
     </div>
 
@@ -37,12 +40,12 @@
         <% else %>
             <% if user_signed_in? %>
                 <% if current_user.programs_to_attend.include?(@program) %>
-                    <%= link_to 'Leave Class', leave_program_path(@program), method: :delete, class: 'btn btn-danger' %>
+                    <%= link_to 'Leave Class', leave_program_path(@program), method: :delete, class: 'btn btn-danger', data: { confirm: "Are you sure?"} %>
                 <% else %>
                     <%= link_to "$ #{@program.price}", payments_path(user: current_user, program: @program), class: 'btn btn-outline-success', method: :post %>
                 <% end %>
             <% else %>
-                <%= link_to 'Purchase', payments_path(user: current_user, program: @program), class: 'btn btn-primary', method: :post %>
+                <%= link_to "$ #{@program.price}", payments_path(user: current_user, program: @program), class: 'btn btn-outline-success', method: :post %>
             <% end %>
         <% end %>
       </div>

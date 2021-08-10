@@ -2,6 +2,7 @@
 
 body, html {
     height: 100%;
+    font-family: 'Lato', sans-serif;
 }
 
 body{
@@ -62,10 +63,33 @@ body{
     // margin: 80px 20px;
 }
 
+// @media screen and (max-width: 900px) {
+//     .suggestions-div .suggestion-text{
+//         text-align: center;
+//         margin-bottom: 50px;
+//         margin-left: 20px;
+//         margin-right: 20px;
+//     }
+// }
+
 @media screen and (max-width: 768px) {
     .blurry-text, .show-content-not-blurry{
         margin: 80px 50px;
     }
+}
+
+.suggestions-div{
+    margin-top: 250px;
+}
+
+.suggestions-div .suggestion-text{
+    text-align: center;
+    margin: 0 30px 100px 30px;
+}
+
+
+.show-description-duration{
+    text-align: center;
 }
 
 .suggestion-section{

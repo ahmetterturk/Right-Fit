@@ -1,3 +1,7 @@
-<h1><%= @coach.first_name %> <%= @coach.last_name %></h1>
+<div class='self-cover-image'>
+    <h1><%= @coach.first_name %> <%= @coach.last_name %></h1>
+</div>
+
+
 <h2>Coached Programs</h2>
 <%= render 'card/card', programs: @coached_programs %>
