@@ -5,8 +5,8 @@ class Program < ApplicationRecord
     belongs_to :coach, class_name: "User"
     belongs_to :category
 
-    validates :title, presence: true, length: { maximum: 100 }
-    validates :description, presence: true, length: { maximum: 100 }
+    validates :title, presence: true, length: { maximum: 50 }
+    validates :description, presence: true, length: { maximum: 50 }
     validates :duration, presence: true, numericality: { greater_than: 3, less_than_or_equal_to: 52 }
     validates :content, presence: true, length: { maximum: 10000 }
     validates :price, numericality: { less_than: 100000, message: "of the program is too high" }
@@ -15,10 +15,6 @@ class Program < ApplicationRecord
 
     scope :suggested_programs, -> (categories) { where(category: categories) }
 
-    # def self.purchased?
-    #     current_user.programs_to_attend.includes?(self)
-    # end 
-    
     private
     def image_format
         if image.attached? && !image.content_type.in?(%w(image/jpeg image/jpg image/png))

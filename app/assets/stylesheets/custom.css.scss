@@ -4,6 +4,10 @@ body, html {
     height: 100%;
 }
 
+body{
+    margin-top: 72px;
+}
+
 .cover-image {
     /* The image used */
     background-image: url("/assets/ropes.jpeg");
@@ -21,12 +25,29 @@ body, html {
     // background-image: url("/assets/ropes.jpeg");
   
     /* Determined height */
-    height: 40%;
+    height: 50%;
   
     /* Center and scale the image nicely */
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
+}
+
+.show-page-content{
+    text-align: center;
+}
+
+.checkout-section{
+    margin: 180px 60px;
+    text-align: center;
+}
+.success-card{
+    margin-top: 100px;
+}
+
+.reviews-section{
+    // border: 1px solid black;
+    margin-bottom: 30px;
 }
 
 .show-header-client-count{
@@ -38,7 +59,14 @@ body, html {
 .blurry-text {
     text-shadow: 0 0 10px rgb(0, 0, 0);
     color: transparent;
- }
+    // margin: 80px 20px;
+}
+
+@media screen and (max-width: 768px) {
+    .blurry-text, .show-content-not-blurry{
+        margin: 80px 50px;
+    }
+}
 
 .suggestion-section{
     text-align: center;
@@ -86,5 +114,5 @@ body, html {
 }
 
 .review-section{
-    margin-top: 500px;
+    margin-top: 200px;
 }
