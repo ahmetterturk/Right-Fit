@@ -1,42 +1,61 @@
-
-<h1><%= @program.title %></h1>
-
-<p>Description: <%= @program.description %></p>
-<p>Duration: <%= @program.duration %></p>
-<p>Content: <%= @program.content %></p>
-<p>Coach: <%= @program.coach.first_name %> <%= @program.coach.last_name %></p>
-<p>Category: <%= @program.category.category_name %></p>
-<p>Price: <%= @program.price %></p>
+<div class='show-page-image' style="background-image: url(<%= @program.image.service_url %>)"> 
+</div>
 
 
-<% if @program.image.attached? %>
-    <%= image_tag @program.image, class: 'show-page-image' %>
-<% else %>
-    <%= image_tag "blank-program.jpg", class: 'show-page-image' %>
-<% end %>
+<div class='container'>
 
-<% if current_user != @program.coach %>
-    <%= link_to "View Coach Page", program_coach_page_path, class: 'btn btn-info' %>
-<% end %>
+  <div class='show-header-client-count'>
+    <h1><%= @program.title %></h1>
+    <p>Students Enrolled: <%= @program.clients.count %></p>  
+  </div>
 
+  <div class='row'>
+    <div class='col-md-6 col-12 show-description-duration'>
+      <h5>Description</h5>
+      <p><%= @program.description %></p>
+      <h5>Duration</h5>
+      <p><%= @program.duration %> Weeks</p>
+      <h5>Instructor</h5>
+      <p><%= @program.coach.first_name %> <%= @program.coach.last_name %></p>
+      <h5>Category</h5>
+      <p><%= @program.category.category_name %></p>
 
-<% if @program.coach == current_user %>
-    <%= link_to 'Edit', edit_program_path(@program), class: 'btn btn-warning' %>
-    <%= link_to 'Delete', program_path(@program), method: :delete, class: 'btn btn-danger'%>
-<% else %>
-    <% if user_signed_in? %>
-        <% if current_user.programs_to_attend.include?(@program) %>
-            <%= link_to 'Leave Class', leave_program_path(@program), method: :delete, class: 'btn btn-danger' %>
+      <% if current_user != @program.coach %>
+          <%= link_to "Instructor's Profile", program_coach_page_path, class: 'btn btn-outline-secondary' %>
+          <a href = "mailto: <%= @program.coach.email %>" class='btn btn-outline-secondary'>Contact Instructor</a>
+      <% end %>
+    </div>
+
+    <div class='col-md-6 col-12'>  
+      <% if user_signed_in? && ( current_user.programs_to_attend.include?(@program) || current_user.programs_to_coach.include?(@program) || user_signed_in? && current_user.admin ) %>
+          <p class='show-content-not-blurry'>Content: <%= @program.content %></p>
+      <% else %>
+          <p class='blurry-text'><%= @program.content %></p>
+          <p class='show-page-content'>Join this class now to access content</p>
+      <% end %>
+
+      <div class='show-page-content'>
+        <% if can? :manage, @program %>
+            <%= link_to 'Edit', edit_program_path(@program), class: 'btn btn-warning' %>
+            <%= link_to 'Delete', program_path(@program), method: :delete, class: 'btn btn-danger', data: { confirm: "Are you sure?"}%>
         <% else %>
-            <%= link_to 'Purchase', payments_path(user: current_user, program: @program), class: 'btn btn-primary', method: :post %>
+            <% if user_signed_in? %>
+                <% if current_user.programs_to_attend.include?(@program) %>
+                    <%= link_to 'Leave Class', leave_program_path(@program), method: :delete, class: 'btn btn-danger', data: { confirm: "Are you sure?"} %>
+                <% else %>
+                    <%= link_to "$ #{@program.price}", payments_path(user: current_user, program: @program), class: 'btn btn-outline-success', method: :post %>
+                <% end %>
+            <% else %>
+                <%= link_to "$ #{@program.price}", payments_path(user: current_user, program: @program), class: 'btn btn-outline-success', method: :post %>
+            <% end %>
         <% end %>
-    <% else %>
-        <%= link_to 'Purchase', payments_path(user: current_user, program: @program), class: 'btn btn-primary', method: :post %>
-    <% end %>
-<% end %>
+      </div>
+    </div>
+  </div>
 
-<h2>Reviews</h2>
-<%= render 'reviews/reviews' %>
+  <div class='review-section'>
+    <%= render 'reviews/reviews' %>
+    <%= render 'reviews/new' %>  
+  </div>
+</div>
 
-<h3>Add Review</h3>
-<%= render 'reviews/new' %>

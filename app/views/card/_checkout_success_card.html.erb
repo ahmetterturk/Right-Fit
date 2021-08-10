@@ -1,8 +1,6 @@
 <div class='container-xl'>
   <div class='row'>
-    <% programs.each do |program| %>
-      <%# <div class="card text-center mx-auto shadow p-3 mb-5 bg-white" > %>
-      <div class="card text-center shadow p-3 mb-5 bg-white card-other" >
+      <div class="card text-center mx-auto shadow p-3 mb-5 bg-white card-other" >
         <% if program.image.attached? %>
             <%= image_tag program.image, class: 'card-img-top' %>
         <% else %>
@@ -15,6 +13,5 @@
             <%= link_to 'View Program', program_path(program.id), class: 'btn btn-primary' %>
         </div>
       </div>
-    <% end %>
   </div>
 </div>

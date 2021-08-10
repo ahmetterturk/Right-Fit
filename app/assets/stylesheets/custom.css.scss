@@ -1,15 +1,148 @@
 @import 'bootstrap/dist/css/bootstrap';
 
-.gap-2{
-    margin-top: 15px;
+body, html {
+    height: 100%;
+    font-family: 'Lato', sans-serif;
 }
 
-// .btn-primary{
-//     background-color: rgb(125, 33, 133);
-//     border: rgb(101, 26, 108);
-// }
+h1{
+    text-align: center;
+}
 
-// .btn-primary:hover{
-//     background-color: rgb(104, 29, 111);
-//     border: rgb(74, 19, 79);
-// }
+body{
+    margin-top: 72px;
+}
+
+.cover-image {
+    /* The image used */
+    background-image: url("/assets/ropes.jpeg");
+  
+    /* Determined height */
+    height: 60%;
+  
+    /* Center and scale the image nicely */
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.show-page-image {
+    // background-image: url("/assets/ropes.jpeg");
+  
+    /* Determined height */
+    height: 50%;
+  
+    /* Center and scale the image nicely */
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.show-page-content{
+    text-align: center;
+}
+
+.checkout-section{
+    margin: 180px 60px;
+    text-align: center;
+}
+.success-card{
+    margin-top: 100px;
+}
+
+
+.div-for-form-margin-from-top{
+    margin-top: 250px;
+}
+
+.unhappy{
+    margin-top: 10px;
+    text-align: center;
+}
+
+
+.show-header-client-count{
+    text-align: center;
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+
+.blurry-text {
+    text-shadow: 0 0 10px rgb(0, 0, 0);
+    color: transparent;
+}
+
+
+
+@media screen and (max-width: 768px) {
+    .blurry-text, .show-content-not-blurry{
+        margin: 80px 50px;
+    }
+}
+
+.suggestions-div{
+    margin-top: 250px;
+}
+
+.suggestions-div .suggestion-text{
+    text-align: center;
+    margin: 0 30px 100px 30px;
+}
+
+
+.show-description-duration{
+    text-align: center;
+}
+
+.suggestion-section{
+    text-align: center;
+    margin:  200px 50px;
+}
+
+.search-bar{
+    text-align: center;
+    margin: 100px;
+}
+
+.search-bar-submit, .search-bar-form{
+    text-align: center;
+    height: 40px;
+    border-radius: 10px;
+}
+
+.card{
+    border: none;
+    border-radius: 15px;
+    width: 20rem;
+}
+
+.bg-white {
+    background-color: #f2f2f2!important;
+}
+
+.card-img-top {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+.index-page-card{
+    margin-top: 50px;
+}
+
+.forms-for-input-data{
+    width: 500px;
+}
+
+.card-other{
+    margin-left: 50px;
+}
+
+.review-section{
+    margin-top: 200px;
+}
+
+.btn-primary{
+    background-color: #3284ff;
+    border-color: #3284ff;
+}

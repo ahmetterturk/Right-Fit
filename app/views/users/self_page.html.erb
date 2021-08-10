@@ -1,20 +1,27 @@
-<h1><%= current_user.first_name %> <%= current_user.last_name %></h1>
+<div class="p-5 mb-4 bg-light rounded-3">
+  <div class="container py-5">
+    <h1><%= current_user.first_name %> <%= current_user.last_name %></h1>
+      <% if current_user.profile %>
+      <h4>Measures</h4>      
+        <p>Age: <%= @client_age %></p> 
+        <p>Height: <%= current_user.profile.height %></p> 
+        <p>Weight: <%= current_user.profile.weight %></p>
+        <p>BMI: <%= '%.2f' % @bmi %></p>
+      <%= link_to "Edit Profile", edit_profile_path %>
+      <%= link_to "Delete Profile", current_user.profile, method: :delete, data: { confirm: "Are you sure?"} %>
+      <% else %>
+        You don't have a body profile. 
+        <%= link_to "Create Profile", new_profile_path %>
+      <% end %>
+  </div>
+</div>
 
-<h2>Measures</h2>
-<% if current_user.profile %>
-    <p>Age: <%= current_user.profile.age %></p> 
-    <p>Height: <%= current_user.profile.height %></p> 
-    <p>Weight: <%= current_user.profile.weight %></p>
-    <p>BMI: <%= @bmi %></p>
-    <%= link_to "Edit Profile", edit_profile_path %>
-    <%= link_to "Delete Profile", current_user.profile, method: :delete, data: { confirm: "Are you sure?"} %>
-<% else %>
-    You don't have a body profile. create a profile 
-    <%= link_to "Create Profile", new_profile_path %>
-<% end %>
 
-<h2>Coached Programs</h2>
-<%= render 'card/card', programs: @coached_programs %>
+<div class='container self-page-programs'>
+      <h2>Coached Programs</h2>
+      <%= render 'card/card', programs: @coached_programs %>
 
-<h2>Attended Programs</h2>
-<%= render 'card/card', programs: @attended_programs %>
+      <h2>Attended Programs</h2>
+      <%= render 'card/card', programs: @attended_programs %>
+  </div>
+</div>

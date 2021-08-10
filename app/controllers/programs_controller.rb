@@ -5,10 +5,11 @@ class ProgramsController < ApplicationController
 
     def index
         @q = Program.ransack(params[:q])
-        @programs = @q.result(distinct: true)
+        @programs = @q.result(distinct: true).limit(20).includes(:category, image_attachment: :blob)
     end
 
     def show
+        @reviews = @program.reviews_to_receive.all.includes(:user, :program)
     end
 
     def new
@@ -21,8 +22,8 @@ class ProgramsController < ApplicationController
         if @program.save
             redirect_to program_path(@program.id)
         else
-            flash.alert = @program.errors.full_messages
-            render 'new'
+            flash.alert = @program.errors.full_messages.join(', ')
+            redirect_to new_program_path 
         end
     end
 
@@ -33,7 +34,8 @@ class ProgramsController < ApplicationController
         if @program.update(get_program_params)
             redirect_to program_path(@program.id)
         else
-            render 'edit'
+            flash.alert = @program.errors.full_messages.join(', ')
+            redirect_to edit_program_path
         end
     end
 

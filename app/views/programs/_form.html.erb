@@ -1,11 +1,11 @@
 <div class='row justify-content-center'>
-    <div style="width: 500px;">
+    <div class='forms-for-input-data'>
         <%= form_with model: @program do |form| %>
             <%= form.label :title, "Title:" %>
             <%= form.text_field :title, class:"form-control" %>
             
             <%= form.label :description, "Description:" %>
-            <%= form.text_area :description, class:"form-control"%>
+            <%= form.text_field :description, class:"form-control"%>
 
             <%= form.label :price, "Price:" %>
             <%= form.number_field :price, class:"form-control", min: 0 %>

@@ -1,5 +1,5 @@
-<div class='row justify-content-center'>
-  <div style="width: 500px;">
+<div class='row justify-content-center div-for-form-margin-from-top'>
+  <div class='forms-for-input-data'>
   <h2>Sign up</h2>
     <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
       <%= render "devise/shared/error_messages", resource: resource %>
@@ -38,6 +38,10 @@
             <%= f.submit "Sign up", class:"btn btn-primary" %>
       </div>
       <% end %>
-    <%= render "devise/shared/links" %>
+
+      <div class="unhappy">
+          <%= render "devise/shared/links"%>
+      </div>
+
   </div>
 </div>

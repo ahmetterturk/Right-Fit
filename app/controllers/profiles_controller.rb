@@ -17,7 +17,8 @@ class ProfilesController < ApplicationController
         if @profile.save 
             redirect_to user_page_path(current_user)
         else
-            render 'new'
+            flash.alert = @profile.errors.full_messages.join(', ')
+            redirect_to new_profile_path 
         end
     end
 
@@ -28,7 +29,8 @@ class ProfilesController < ApplicationController
         if @profile.update(get_program_params)
             redirect_to profile_path(current_user)
         else
-            render 'edit'
+            flash.alert = @profile.errors.full_messages.join(', ')
+            redirect_to edit_profile_path 
         end
     end
 

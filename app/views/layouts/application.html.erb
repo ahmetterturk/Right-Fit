@@ -7,12 +7,16 @@
 
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato&family=Open+Sans:wght@600&display=swap" rel="stylesheet">
   </head>
 
   <body>
     <%= render 'partials/navbar'%>
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
+    <%= render 'partials/alert_notice'%>
     <%= yield %>
+
   </body>
+    <%= render 'partials/footer'%>  
 </html>

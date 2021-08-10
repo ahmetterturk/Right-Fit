@@ -1,3 +1,43 @@
 // Place all the styles related to the users controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
+
+body, html {
+    height: 100%;
+}
+
+.self-cover-image {
+    /* The image used */
+    // background-image: url("/assets/ropes.jpeg");
+    background-color: rgb(176, 222, 250);
+  
+    /* Determined height */
+    height: 30%;
+  
+    /* Center and scale the image nicely */
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.self-cover-image h1{
+    color: white;
+}
+
+.coach-page-coached-programs h2{
+    text-align: center;
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+
+.self-page-programs h2{
+    text-align: center;
+}
+
+.py-5{
+    text-align: center;
+}

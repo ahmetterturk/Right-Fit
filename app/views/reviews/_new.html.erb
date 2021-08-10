@@ -1,9 +1,10 @@
 <% if user_signed_in? %>
-    <%= form_with model: [@program, @program.reviews_to_receive.build] do |form| %>
-
-        <%= form.label :content, "Content:" %><br>
-        <%= form.text_area :content %><br>
-
-        <%= form.submit %>
-    <% end %>
+  <h3>Add Review</h3>
+  <%= form_with model: [@program, @program.reviews_to_receive.build] do |form| %>
+    <%= form.label :content, "Content:" %><br>
+    <%= form.text_area :content, class:"form-control" %><br>
+    <%= form.submit 'Add Review', class:'btn btn-primary'%>
+  <% end %>
+<% else %>
+  <p>Sign In To Add A Review</p> 
 <% end %>

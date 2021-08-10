@@ -8,6 +8,7 @@ class ReviewsController < ApplicationController
         @review.program = @program
         @review.save
         redirect_to program_path(@program)
+        flash[:alert] = "Review content can't be blank!" if @review.errors.full_messages.any?
     end
 
     def destroy

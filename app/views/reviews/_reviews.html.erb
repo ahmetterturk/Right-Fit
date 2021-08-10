@@ -1,8 +1,15 @@
-<% @program.reviews_to_receive.each do |review| %>
-    <p>Commenter: <%= review.user.first_name %> <%= review.user.last_name %></p>
-    <p>Content: <%= review.content %></p>
-    
-    <% if review.user == current_user %>
-        <%= link_to 'Delete', [review.program, review], method: :delete, class: 'btn btn-danger', data: { confirm: "Are you sure you want to delete comment?"}%>
-    <% end %>
+<h2>Reviews</h2>
+<% if @reviews.exists? %>
+  <% @reviews.each do |review| %>
+    <div class='reviews-section shadow-sm p-3 mb-3 bg-body rounded'>
+        <h6><strong><%= review.user.first_name %> <%= review.user.last_name %></strong></h6> 
+        <p><%= review.created_at.strftime("%Y-%m-%d %H:%M") %></p> 
+        <p><%= review.content %></p> 
+        <% if can? :destroy, review %>
+            <%= link_to 'Delete', [review.program, review], method: :delete, class: 'badge rounded-pill bg-danger', data: { confirm: "Are you sure you want to delete comment?"} %>
+        <% end %>      
+    </div>
+  <% end %>
+<% else %>
+  <p>This Program Has Not Been Reviewed Yet</p>
 <% end %>
