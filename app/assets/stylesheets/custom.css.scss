@@ -5,6 +5,10 @@ body, html {
     font-family: 'Lato', sans-serif;
 }
 
+h1{
+    text-align: center;
+}
+
 body{
     margin-top: 72px;
 }
@@ -46,10 +50,16 @@ body{
     margin-top: 100px;
 }
 
-.reviews-section{
-    // border: 1px solid black;
-    margin-bottom: 30px;
+
+.div-for-form-margin-from-top{
+    margin-top: 250px;
 }
+
+.unhappy{
+    margin-top: 10px;
+    text-align: center;
+}
+
 
 .show-header-client-count{
     text-align: center;
@@ -60,17 +70,9 @@ body{
 .blurry-text {
     text-shadow: 0 0 10px rgb(0, 0, 0);
     color: transparent;
-    // margin: 80px 20px;
 }
 
-// @media screen and (max-width: 900px) {
-//     .suggestions-div .suggestion-text{
-//         text-align: center;
-//         margin-bottom: 50px;
-//         margin-left: 20px;
-//         margin-right: 20px;
-//     }
-// }
+
 
 @media screen and (max-width: 768px) {
     .blurry-text, .show-content-not-blurry{
@@ -134,9 +136,13 @@ body{
 
 .card-other{
     margin-left: 50px;
-    // width: 15rem;
 }
 
 .review-section{
     margin-top: 200px;
+}
+
+.btn-primary{
+    background-color: #3284ff;
+    border-color: #3284ff;
 }

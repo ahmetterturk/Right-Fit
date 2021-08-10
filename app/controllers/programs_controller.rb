@@ -22,8 +22,7 @@ class ProgramsController < ApplicationController
         if @program.save
             redirect_to program_path(@program.id)
         else
-            # flash.alert = @program.errors.full_messages.first
-            flash.alert = @program.errors.full_messages
+            flash.alert = @program.errors.full_messages.join(', ')
             redirect_to new_program_path 
         end
     end
@@ -35,8 +34,7 @@ class ProgramsController < ApplicationController
         if @program.update(get_program_params)
             redirect_to program_path(@program.id)
         else
-            # flash.alert = @program.errors.full_messages.first
-            flash.alert = @program.errors.full_messages
+            flash.alert = @program.errors.full_messages.join(', ')
             redirect_to edit_program_path
         end
     end
@@ -53,7 +51,6 @@ class ProgramsController < ApplicationController
 
     def set_program
         @program = Program.find(params[:id])
-        # @program = Program.includes(:reviews_to_receive).find(params[:id])
     end 
 
     def set_categories

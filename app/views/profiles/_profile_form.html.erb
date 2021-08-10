@@ -4,13 +4,15 @@
             <%= form.label :age, "Age:" %>
             <%= form.date_field :age, class:"form-control" %>
 
-            <%= form.label :height, "Height:" %>
+            <%= form.label :height, "Height(cm):" %>
             <%= form.number_field :height, class:"form-control" %>
 
-            <%= form.label :weight, "Weight:" %>
+            <%= form.label :weight, "Weight(kg):" %>
             <%= form.number_field :weight, class:"form-control" %>
             
-            <%= form.submit %>
+            <div class="d-grid gap-2">
+                <%= form.submit class:"btn btn-primary" %>
+            </div>
         <% end %>
     </div>
 </div>

@@ -22,6 +22,7 @@
 
       <% if current_user != @program.coach %>
           <%= link_to "Instructor's Profile", program_coach_page_path, class: 'btn btn-outline-secondary' %>
+          <a href = "mailto: <%= @program.coach.email %>" class='btn btn-outline-secondary'>Contact Instructor</a>
       <% end %>
     </div>
 
@@ -52,17 +53,9 @@
     </div>
   </div>
 
-
-
-
   <div class='review-section'>
-
     <%= render 'reviews/reviews' %>
-
-
     <%= render 'reviews/new' %>  
   </div>
-
-
 </div>
 

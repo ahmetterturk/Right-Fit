@@ -4,7 +4,6 @@
 
 body, html {
     height: 100%;
-    text-align: center;
 }
 
 .self-cover-image {
@@ -29,7 +28,16 @@ body, html {
     color: white;
 }
 
-h2{
+.coach-page-coached-programs h2{
+    text-align: center;
     margin-top: 50px;
     margin-bottom: 50px;
+}
+
+.self-page-programs h2{
+    text-align: center;
+}
+
+.py-5{
+    text-align: center;
 }
