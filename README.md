@@ -47,8 +47,7 @@ The website has an admin feature. There could be any number of admins but they h
 The website is responsive to different devices and screen sizes. This makes the program efficient and convinient to access via any device. 
 
 ### Sitemap
-
-
+![Sitemap](docs/sitemap.png)
 
 
 ### Screenshots
@@ -172,8 +171,6 @@ The target audience of this website is people who want to discover a wide range 
 - As an admin, I want to be able to control the whole flow of the webiste and relationships through the admin dashboard.
 
 
-
-
 ## R13-Wireframes for your app
 #### Landing Page
 ![home page](docs/w-home-page.png)
@@ -197,10 +194,7 @@ The target audience of this website is people who want to discover a wide range 
 ![Suggestions](docs/w-suggestions.png)
 
 
-
-
 ## R14-An ERD for your app
-
 #### Initial ERD
 ![Initial ERD](docs/first-erd.png)
 
@@ -219,8 +213,82 @@ The target audience of this website is people who want to discover a wide range 
 
 ## R16-Detail any third party services that your app will use
 
+### Devise
+Devise is an established and popular gem that is used for authentication in rails applications. Devise is based on a modularity concept and lets developers use only the solutions that thay need. Devise carries the heavy load of authentication with modules that operate to register new users, hash passwords before they are saved to the database, validate emails and passwords, recover and reset passwords and many other operations. In this application, devise is used for registrating new accounts, handling user sessions and authenticating users before they are allowed access to certain features.
+
+### Amazon Simple Storage Service (S3) 
+Amazon S3 is a secure cloud service offered by Amazon Web Services that provides object storage through a web service interface. In this application, it is used for uploading and storing images of programs and eliminates the need for local storage. It is also highly compatible with deployment platforms like Heroku. 
+
+### Heroku 
+Heroku is a platform as a service (PaaS) that enables developers to build, run, and operate applications entirely in the cloud. Heroku has its own database management system that does not interfere with the local database setup of applications. This application is deployed with Heroku. 
+
+### Github
+Github is an internet hosting provider for software applications that uses the well established version control system Git. Github provides access control and several collaboration features such as bug tracking, feature requests, task management and continuous integration. For this project, Github is used to store the project remotely right from the start and helps manage different branches and merging through pull requests. It allows the developer to view code changes between commits visually which makes development much more efficient.
+
+### Stripe
+Stripe is a financial services and software as a service that offers payment processing software and application programming interfaces for applications. This application uses Stripe for processing and accepting payments. Stripe is implemented with the help of the stripe gem. 
+
+### Ransack
+Ransack enables the creation of both simple and advanced search forms for rails applications. Ransack gem is used for filtering programs in the application with both title and the category attributes of the program model.
+
+### Bullet
+The Bullet gem is designed to help increase the application's performance by reducing the number of queries it makes. It watches queries during development of the application and notifies the developer when eager loading should be added. 
+
+### Faker
+Faker is a gem that generates fake data to help in the development process. In this application, faker gem is used to create users with generated random first and last names. 
+
+### Cancancan
+CanCanCan is an authorization library for Ruby and Ruby on Rails which restricts what resources a given user is allowed to access. For this application, CanCanCan is used to grant the admin user with extra authorization that allows them to delete and edit all programs and reviews. 
+
+### Rails Admin
+Rails admin is an easy to use admin interface that allows authorised personel of the application to perform all kinds of actions in the website. 
+
+### Bootsrap
+Bootstrap is a free and open source CSS framework directed at responsive, mobile-first front-end web development. It contains CSS and JavaScript based design templates and components. This application uses many of bootstrap's components and features for styling and responsive design.
 
 
+- Languages 
+    - HTML5
+    - CSS3
+    - Ruby "2.7.2"
+
+- Application Framework
+    - Ruby on Rails - version '6.0.3.7'
+
+- Database Managament System
+    - PostgreSQL
+
+- CSS Framework
+    - Bootstrap - version "5" 
+
+- Deployment Platform
+    - Heroku
+
+- Image Cloud Storage 
+    - Amazon Simple Storage Service (S3)
+
+- Payment System 
+    - Stripe 
+
+- Version Control and Remote Hosting
+    - Git 
+    - Github
+
+- Project Management
+    - Trello 
+    - Balsamiq Wireframes
+    - Diagrams.net
+
+- Ruby Custom Gems
+    - gem 'devise'
+    - gem 'faker'
+    - gem 'jquery-rails'
+    - gem "aws-sdk-s3"
+    - gem 'stripe'
+    - gem 'ransack'
+    - gem 'cancancan'
+    - gem 'rails_admin'
+    - gem 'bullet'
 
 
 ## R17-Describe your projects models in terms of the relationships (active record associations) they have with each other
