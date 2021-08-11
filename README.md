@@ -1,6 +1,7 @@
 # RightFit
 
 ## R9-A link (URL) to your deployed app (i.e. website)
+[RightFit Deployed Website](https://rightfit-rails.herokuapp.com)
 
 ## R10-A link to your GitHub repository (repo).
 [RightFit Github Repository](https://github.com/ahmetterturk/RightFit)
@@ -174,12 +175,37 @@ The target audience of this website is people who want to discover a wide range 
 
 
 ## R13-Wireframes for your app
+#### Landing Page
+![home page](docs/w-home-page.png)
+
+#### Sign Up Page
+![Sign Up](docs/w-sign-up.png)
+
+#### New Listing
+![New Listing](docs/w-new-listing.png)
+
+#### User Profile Page 
+![User Profile Page](docs/w-profile-page.png)
+
+#### Program Coach Page
+![Program Coach Page](docs/w-coach-page.png)
+
+#### Show Page
+![Show Page](docs/w-program-page.png)
+
+#### Suggestions Page
+![Suggestions](docs/w-suggestions.png)
 
 
 
 
 ## R14-An ERD for your app
 
+#### Initial ERD
+![Initial ERD](docs/first-erd.png)
+
+#### Latest ERD
+![Latest ERD](docs/erd-after.png)
 
 
 
@@ -214,7 +240,105 @@ The target audience of this website is people who want to discover a wide range 
 
 
 ## R19-Provide your database schema design
+```ruby
+create_table "active_storage_attachments", force: :cascade do |t|
+  t.string "name", null: false
+  t.string "record_type", null: false
+  t.bigint "record_id", null: false
+  t.bigint "blob_id", null: false
+  t.datetime "created_at", null: false
+  t.index ["blob_id"], name: "index_active_storage_attachments_on_blob_id"
+  t.index ["record_type", "record_id", "name", "blob_id"], name: "index_active_storage_attachments_uniqueness", unique: true
+end
 
+create_table "active_storage_blobs", force: :cascade do |t|
+  t.string "key", null: false
+  t.string "filename", null: false
+  t.string "content_type"
+  t.text "metadata"
+  t.bigint "byte_size", null: false
+  t.string "checksum", null: false
+  t.datetime "created_at", null: false
+  t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
+end
+
+create_table "categories", force: :cascade do |t|
+  t.string "category_name"
+  t.datetime "created_at", precision: 6, null: false
+  t.datetime "updated_at", precision: 6, null: false
+end
+
+create_table "clients_programs", force: :cascade do |t|
+  t.bigint "user_id", null: false
+  t.bigint "program_id", null: false
+  t.datetime "created_at", precision: 6, null: false
+  t.datetime "updated_at", precision: 6, null: false
+  t.index ["program_id"], name: "index_clients_programs_on_program_id"
+  t.index ["user_id"], name: "index_clients_programs_on_user_id"
+end
+
+create_table "profiles", force: :cascade do |t|
+  t.date "age"
+  t.float "height"
+  t.float "weight"
+  t.integer "body_fat_percentage"
+  t.bigint "user_id", null: false
+  t.datetime "created_at", precision: 6, null: false
+  t.datetime "updated_at", precision: 6, null: false
+  t.index ["user_id"], name: "index_profiles_on_user_id"
+end
+
+create_table "programs", force: :cascade do |t|
+  t.string "title"
+  t.text "description"
+  t.integer "duration"
+  t.text "content"
+  t.integer "coach_id"
+  t.datetime "created_at", precision: 6, null: false
+  t.datetime "updated_at", precision: 6, null: false
+  t.bigint "user_id"
+  t.bigint "category_id", null: false
+  t.integer "price"
+  t.index ["category_id"], name: "index_programs_on_category_id"
+  t.index ["user_id"], name: "index_programs_on_user_id"
+end
+
+create_table "reviews", force: :cascade do |t|
+  t.string "title"
+  t.text "content"
+  t.integer "rating"
+  t.bigint "user_id", null: false
+  t.bigint "program_id", null: false
+  t.datetime "created_at", precision: 6, null: false
+  t.datetime "updated_at", precision: 6, null: false
+  t.index ["program_id"], name: "index_reviews_on_program_id"
+  t.index ["user_id"], name: "index_reviews_on_user_id"
+end
+
+create_table "users", force: :cascade do |t|
+  t.string "email", default: "", null: false
+  t.string "encrypted_password", default: "", null: false
+  t.string "reset_password_token"
+  t.datetime "reset_password_sent_at"
+  t.datetime "remember_created_at"
+  t.datetime "created_at", precision: 6, null: false
+  t.datetime "updated_at", precision: 6, null: false
+  t.string "first_name"
+  t.string "last_name"
+  t.boolean "admin", default: false
+  t.index ["email"], name: "index_users_on_email", unique: true
+  t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+end
+
+add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
+add_foreign_key "clients_programs", "programs"
+add_foreign_key "clients_programs", "users"
+add_foreign_key "profiles", "users"
+add_foreign_key "programs", "categories"
+add_foreign_key "programs", "users"
+add_foreign_key "reviews", "programs"
+add_foreign_key "reviews", "users"
+```
 
 
 
