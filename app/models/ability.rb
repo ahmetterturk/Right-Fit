@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+# this model file comes with the cancancan gem and is used for authorisation. With this gem, I've created admin functionality and assigned the admin with controll ability over the website
 class Ability
   include CanCan::Ability
 
