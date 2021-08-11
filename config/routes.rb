@@ -1,29 +1,23 @@
 Rails.application.routes.draw do
+  # rails_admin route
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
+
+  # devise routes
   devise_for :users
 
+  # root route
   root "programs#index"
-
-  # programs
-  # get '/programs', to: 'programs#index', as:'programs'
-  # get '/programs/new', to: 'programs#new', as:'new_program'
-  # post '/programs', to: 'programs#create'
-  # get '/programs/:id', to: 'programs#show', as: 'program'
-  # get '/programs/:id/edit', to: 'programs#edit', as: 'edit_program'
-  # patch '/programs/:id', to: 'programs#update'
-  # # delete '/programs/:id', to: 'programs#delete'
-  # delete '/programs/:id', to: 'programs#delete', as: 'delete_program'
   
-  # programs and reviews
+  # programs and reviews routes
   resources :programs do 
     resources :reviews 
   end
 
-  # users
+  # users routes
   get '/users/:id', to: 'users#self_page', as: 'user_page'
   get '/programs/:id/coach', to: 'users#coach_page', as: 'program_coach_page'
 
-  # profiles
+  # profiles routes
   get '/profiles', to: 'programs#index', as: 'profiles'
   get '/users/profile', to: 'programs#show', as: 'profile'
   get '/users/profile/new', to: 'profiles#new', as: 'new_profile'
@@ -32,17 +26,11 @@ Rails.application.routes.draw do
   patch '/users/profile', to: 'profiles#update'
   delete '/users/profile', to: 'profiles#delete'
 
-  # suggestions
+  # suggestions route
   get '/suggestions', to: 'suggestions#index', as: 'suggestions'
 
-  # client_programs
-  # post '/client_programs', to: 'client_programs#create', as: 'client_programs'
-  # delete '/client_programs/:id', to: 'client_programs#leave_program', as: 'leave_program'
-
-  # payments
+  # payments routes 
   resources :payments, only: [:create]
   get 'payment/success', to: 'payments#success'
-  # get 'payment/cancel', to: 'payments#cancel'
   delete '/client_programs/:id', to: 'payments#leave_program', as: 'leave_program'
-
 end

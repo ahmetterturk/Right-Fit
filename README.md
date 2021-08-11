@@ -237,7 +237,7 @@ The Bullet gem is designed to help increase the application's performance by red
 ### Faker
 Faker is a gem that generates fake data to help in the development process. In this application, faker gem is used to create users with generated random first and last names. 
 
-### Cancancan
+### CanCanCan
 CanCanCan is an authorization library for Ruby and Ruby on Rails which restricts what resources a given user is allowed to access. For this application, CanCanCan is used to grant the admin user with extra authorization that allows them to delete and edit all programs and reviews. 
 
 ### Rails Admin
