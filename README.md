@@ -24,8 +24,73 @@ The purpose of this marketplace application is to provide a platform for people 
 
 
 ### Functionality / features
+#### Authentication
+The application's authentication system is integrated with the devise gem that handles opearations that require authentication. This system comes into effect when a user wants to sign up to the website and sign in with the created account. This functionality also provides features to handle actions that require for the user to be identified and authorised such as creating a program, purchasing a program, adding reviews to programs, creating a body profile and using the 'suggestions' recommendation algorithm.
+
+#### Authorisation
+All users that are members of the website have certain authorisations. Users can view every program, but can only edit and delete programs that belong to them. Users can view all the reviews that are made on programs but can only delete the reviews that thay have posted. Users also have the authority to only edit and delete their own body profiles. The website also has an admin assigned. Admin user has extra authority over the website. Admin can edit and delete all programs that are posted on the website, regardless of them owning the program. Admins can also delete reviews made by all users and can view the content of every website.
+
+#### Suggestions
+This is one of them main features of this application. The suggestion feature uses an algorithm that calculates a users BMI value from the provided information on the users profile and performs a filtering operation on every registered program and finds the most suitable programs that will help the users with their traning. In order to use this feature, users must create a body profile. 
+
+#### Payment System
+The application uses Stripe to handle payments and transactions. Users can purchase programs posted by other users and access the content of the programs only after purchase. 
+
+#### Search Functionality
+The website has a search functionality that filteres programs according to titles or categories. 
+
+#### Admin Functionality
+The website has an admin feature. There could be any number of admins but they have to be assinged the role of the admin to be able to access the authorities. The admin can either edit and delete programs and reviews within the website, or they can use the admin dashboard to access full control over every feature and relations throughout the website. 
+
+#### Resposive Design
+The website is responsive to different devices and screen sizes. This makes the program efficient and convinient to access via any device. 
+
 ### Sitemap
+
+
+
+
 ### Screenshots
+#### Landing Page
+![landing beginning](docs/index-begin.png)
+
+#### Landing Page Programs
+![lanfing programs](docs/index-programs.png)
+
+#### Sign Up
+![Sign Up](docs/Sign-up.png)
+
+#### Sign In
+![Sign In](docs/log-in.png)
+
+#### Suggestions
+![Suggestions](docs/suggestion.png)
+
+#### User Profile Page
+![User Profile Page](docs/profile-page.png)
+
+#### Instructor Page
+![Instructor Page](docs/coach-page.png)
+
+#### Program Before Purchase
+![Program Before Purchase](docs/program-not-purcashed.png)
+
+#### Program After Purchase
+![Program After Purchase](docs/program-after-purcahse.png)
+
+#### Full Program Show Page 
+![Full Program Show Page ](docs/full-page-show.png)
+
+#### Payment Checkout
+![Payment Checkout](docs/payment.png)
+
+#### Successful Checkout
+![Successful Checkout](docs/purchase-success.png)
+
+#### Admin Dashboard
+![Admin Dashboard](docs/admin-dash.png)
+
+
 ### Target audience
 The target audience of this website is people who want to discover a wide range of fitness categories and sports fields, people who want to gain expert level coaching from professionals and for people who want to get started with excerising and fitness but do not have the right tools or the guidance to motivate them in the long run. 
 
@@ -75,6 +140,35 @@ The target audience of this website is people who want to discover a wide range 
     - gem 'bullet'
 ```
 ## R12-User stories for your app
+
+### Visitors 
+ - As a visitor, I want to be able to sign up to the website with a new account.
+ - As a visitor, I want to be able to sign in to the website with my existing account.
+ - As a visitor, I want to be able to see all the programs listed by other users.
+ - As a visitor, I want to be able to view the profile page of the instructor of the programs.
+ - As a visitor, I want to be able to search for programs with the search bar.
+ - As a visitor, I want to be able to contact the instructor of a program with email through the program's show page.
+ - As a visitor, I want to be able to view the reviews made on programs by all users.
+
+### Users 
+ - As a user, I want to be able to view my personal profile page after creating an account.
+ - As a user, I want to be able to create new programs to be listed on the index page, so potential clients can view them.
+ - As a user, I want to be able to edit and update my posted programs, so my clients can access the latest content.
+ - As a user, I want to be able to view the content of my program.
+ - As a user, I do not want users to be able to view the content of my program without purchasing it.
+ - As a user, I want to be able to be able add reviews to programs after signing in with my created account.
+ - As a user, I want to be able to delete the reviews I made in programs.
+ - As a user, I want to be able to create a body profile with my age, height and weight values and obtain my BMI value.
+ - As a user, I want to be able to see the contents of the programs after purchasing them.
+ - As a user, I want to be able to receive a suggestion from the website after creating a body profile.
+ - As a user, I want to be able to update my account information at any time.
+
+### Admin
+- As an admin, I want to be able to access the content of every program without having to purchase it.
+- As an admin, I want to be able to edit and delete programs created by users.
+- As an admin, I want to be able to delete reviews made on programs by other users.
+- As an admin, I want to be able to access the admin dashboard that is only available to admins.
+- As an admin, I want to be able to control the whole flow of the webiste and relationships through the admin dashboard.
 
 
 
