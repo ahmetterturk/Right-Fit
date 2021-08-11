@@ -196,10 +196,10 @@ The target audience of this website is people who want to discover a wide range 
 
 ## R14-An ERD for your app
 #### Initial ERD
-![Initial ERD](docs/first-erd.png)
+![Initial ERD](docs/initial-erd.jpg)
 
-#### Latest ERD
-![Latest ERD](docs/erd-after.png)
+#### Developed ERD
+![Latest ERD](docs/developed-erd.jpg)
 
 
 
@@ -243,7 +243,7 @@ CanCanCan is an authorization library for Ruby and Ruby on Rails which restricts
 ### Rails Admin
 Rails admin is an easy to use admin interface that allows authorised personel of the application to perform all kinds of actions in the website. 
 
-### Bootsrap
+### Bootstrap
 Bootstrap is a free and open source CSS framework directed at responsive, mobile-first front-end web development. It contains CSS and JavaScript based design templates and components. This application uses many of bootstrap's components and features for styling and responsive design.
 
 
