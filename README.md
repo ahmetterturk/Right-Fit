@@ -247,50 +247,6 @@ Rails admin is an easy to use admin interface that allows authorised personel of
 Bootstrap is a free and open source CSS framework directed at responsive, mobile-first front-end web development. It contains CSS and JavaScript based design templates and components. This application uses many of bootstrap's components and features for styling and responsive design.
 
 
-- Languages 
-    - HTML5
-    - CSS3
-    - Ruby "2.7.2"
-
-- Application Framework
-    - Ruby on Rails - version '6.0.3.7'
-
-- Database Managament System
-    - PostgreSQL
-
-- CSS Framework
-    - Bootstrap - version "5" 
-
-- Deployment Platform
-    - Heroku
-
-- Image Cloud Storage 
-    - Amazon Simple Storage Service (S3)
-
-- Payment System 
-    - Stripe 
-
-- Version Control and Remote Hosting
-    - Git 
-    - Github
-
-- Project Management
-    - Trello 
-    - Balsamiq Wireframes
-    - Diagrams.net
-
-- Ruby Custom Gems
-    - gem 'devise'
-    - gem 'faker'
-    - gem 'jquery-rails'
-    - gem "aws-sdk-s3"
-    - gem 'stripe'
-    - gem 'ransack'
-    - gem 'cancancan'
-    - gem 'rails_admin'
-    - gem 'bullet'
-
-
 ## R17-Describe your projects models in terms of the relationships (active record associations) they have with each other
 
 
