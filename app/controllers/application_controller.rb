@@ -3,6 +3,7 @@ class ApplicationController < ActionController::Base
 
     protected
 
+    # allow first and last name parameters, which were added to the model via migration, to be passed in the form in sign up and edit user forms
     def configure_permitted_parameters
         devise_parameter_sanitizer.permit(:sign_up, keys: [:first_name, :last_name])
         devise_parameter_sanitizer.permit(:account_update, keys: [:first_name, :last_name])

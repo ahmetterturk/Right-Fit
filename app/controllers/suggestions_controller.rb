@@ -1,7 +1,11 @@
 class SuggestionsController < ApplicationController
+    # authenticate user receiving a suggestion
     before_action :authenticate_user!, only: [:index]
 
+
     def index
+        # is user has an existing profile, get the results of the calculated_bmi private method, else redirect to the new profile form
+        # according to the bmi values, set the suggested_categories variables to specified category values that are defined in the Category model with scopes.
         if current_user.profile 
             if calculated_bmi > 27
                 suggested_categories = Category.cardio
@@ -17,6 +21,7 @@ class SuggestionsController < ApplicationController
                 @result = "Flexibility and Mobility Training"
             end
 
+            # run a query on all programs with the scope method defined in the Program model and find the matching values with the suggested programs determined in the conditionals above 
             @programs = Program.suggested_programs(suggested_categories).includes([:category, image_attachment: :blob])
         else
             redirect_to new_profile_path
@@ -24,6 +29,7 @@ class SuggestionsController < ApplicationController
     end
 
     private 
+    # get the values in the user's profile and calculate the bmi from the values
     def calculated_bmi
         user_profile = current_user.profile 
         height = user_profile.height 
@@ -31,65 +37,3 @@ class SuggestionsController < ApplicationController
         bmi = (weight / ((height / 100) ** 2))
     end
 end
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-# class SuggestionsController < ApplicationController
-#     before_action :authenticate_user!, only: [:index]
-
-#     def index
-#         @programs = []
-
-#         if current_user.profile 
-#             if calculated_bmi > 30
-#                 array = ['Cardiovascular Training']
-#             elsif calculated_bmi > 21 && calculated_bmi < 30
-#                 array = ['Cardiovascular Training', 'Strength Training']
-#             elsif calculated_bmi > 16 && calculated_bmi < 21
-#                 array = ['Endurance Training', 'Flexibility and Mobility Training']
-#             elsif calculated_bmi < 16
-#                 array = ['Flexibility and Mobility Training']
-#             end
-            
-#             # suggested_categories = set_categories(array)
-#             suggested_categories = Category.where(category_name: array)
-
-#             suggested_categories.each do |category|
-#                 category.programs.includes([image_attachment: :blob]).each do |program| 
-#                     @programs << program
-#                 end 
-#             end
-    
-#             return @programs
-#         else
-#             redirect_to new_profile_path
-#         end
-#     end
-
-#     private 
-#     def calculated_bmi
-#         user_profile = current_user.profile 
-#         height = user_profile.height 
-#         weight = user_profile.weight 
-#         bmi = (weight / ((height / 100) ** 2))
-#     end
-
-#     # def set_categories(list)
-#     #     # Category.where(category_name: list).to_a
-#     #     Category.where(category_name: list)
-#     # end
-# end

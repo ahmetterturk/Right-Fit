@@ -1,4 +1,6 @@
 class ClientProgramsController < ApplicationController
+    # the methods in this controller are moved into the payments controller and are no longer used, but I am keeping the code functional to avoid deployment issues.
+
     before_action :authenticate_user!
 
     def create 
