@@ -202,13 +202,25 @@ The target audience of this website is people who want to discover a wide range 
 ![Latest ERD](docs/developed-erd.jpg)
 
 
-
-
 ## R15-Explain the different high-level components (abstractions) in your app
 
+### Users
+Users in this application are modelled as fitness and healthy lifestyle enthusiasts. Users act in different roles throughout the website. They can perform as instructors in programs to other clients, they can join and enroll in programs posted by instructors, or simply, browse smoothly through the website without having to create an account or sign in. The heavy load of assigning roles to users is taken care of by the developer, allowing users to roam freely without having to notice these changes and enjoy the best user experience possible. 
 
+### Programs
+Programs in this application is one of the main components of the website. Programs are the products listed and purchased by users. Programs, which contain its definition in the name, are online fitness education and lifestyle programs that users can purchase and follow thoughout its duration. Programs have entities such as titles, description, price, duration, content and category. Every program belongs to a category of fitness styles and each program is displayed with an image to give users a better understanding of what to expect. The content of programs is created by its owner and are only accessible once the program us purchased.
 
+### Suggestions
+Suggestions component is a key component of this application. This functionality helps users determine the best programs to consider when making a change in their lifestyle. The way this feature works, it offers a suggestion to users. If users are members of the website and have created a body profile with their age, height and weight values, the algorithm behind the feature calculates the users BMI and makes recommendations to the user that best suits their body profile and will benefit them in the best way possible. Suggestions may change upon the progress of the user.
 
+### User Experience
+The user experience of the website is configured to be as smooth and effortless as possible. Users that sign up to the website perform multiple tasks and produce complex solutions without feeling the burden of any of these operations or getting lost within the website. The styling is simple and elegant, while being responsive and powerful. 
+
+### Payments
+The application makes use of external companies to handle payments, making transactions smooth and safe for all parties without any privacy or security issues. Payments are made simple with a single click of a button that lead the user to the external checkout page where they can make the purchase with different payment techniques.
+
+### Visual Context
+All programs include images of the program to display to users what to expect and give them a context of what the outcomes are. It also helps users display their environments and tools and helps create rapport instructors and clients. 
 
 
 ## R16-Detail any third party services that your app will use
