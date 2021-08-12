@@ -220,7 +220,7 @@ The user experience of the website is configured to be as smooth and effortless 
 The application makes use of external companies to handle payments, making transactions smooth and safe for all parties without any privacy or security issues. Payments are made simple with a single click of a button that lead the user to the external checkout page where they can make the purchase with different payment techniques.
 
 ### Visual Context
-All programs include images of the program to display to users what to expect and give them a context of what the outcomes are. It also helps users display their environments and tools and helps create rapport instructors and clients. 
+All programs include images of the program to display to users what to expect and give them a context of what the outcomes are. It also helps users display their environments and tools and helps create rapport between instructors and clients. 
 
 
 ## R16-Detail any third party services that your app will use
@@ -458,9 +458,17 @@ add_foreign_key "reviews", "programs"
 add_foreign_key "reviews", "users"
 ```
 
-
-
-
-
-
 ## R20-Describe the way tasks are allocated and tracked in your project
+[Trello Board](https://trello.com/b/BUApIpz1/marketplace-application)
+
+In the development cycle of this project, tasks are allocated and narrowed down into smaller tasks and solved through feature branching, continuous development, continuous deployment and merging on to the main branch only after the feature is complete and working without errors. After each feature is compelete, the program is tested manually in the local servers and are attempted to be deployed to remote hosts. Any errors during this development cycle is noted down on trello in the problems card attempted to be resolved. Any unresolved issues are let known to instructors through the team trello board and solved with their help. 
+
+Trello is the main task tracking application used to assist the development of the project. Other applications such as Balsamiq are also used for guidance and act as a blueprint in planning the application. In the initial stage, A trello board is created with the Kanban template and modified according to needs. All documentation requirements are listed in one column and all code requirements are listed in onther column. The priority of tasks are symbolled with labels in relation to their requirements. Green labels define required tasks and yellow labels define optional tasks.
+
+Tasks are continously switched in different colums according to their current state. If a task is being worked on, it is moved to the `Doing` column. If a feature is being tested, it is moved to the `Testing` column. Any tasks that arise are noted into `To Do` section. Once the tasks are completed, they are moved to the `Done` column. In the last stage of the trello board, all tasks are completed except some optional features.
+
+#### Initial Trello Board
+![Initial Trello Board](docs/trello-initial.png)
+
+#### Final Trello Board
+![Final Trello Board](docs/trello-final.png)
