@@ -311,11 +311,38 @@ has_many :programs
 
 
 ## R18-Discuss the database relations to be implemented in your application
+The database relations implemented in this application consists of simple and complex relationships. This application takes advantage of the three database relationship types that consist of `one-to-one`, `one-to-many` and `many-to-many` relationships. 
 
+### User
+- Users in this application have two kinds of roles. They act as either clients or coaches. 
+- When the user takes on the coach role, they form a `one-to-many` relationship with the program model where each user may have zero or multiple programs to coach.
+- When the user taken on a client role, they form a `many-to-many`relationship with programs where programs can have many clients or the user can be a client of different programs.
+- The user model has a `one-to-many` relationship with reviews. This means a user can have zero or multiple reviews.
+- A user has a `one-to-one` relationship with the profile model. Every user can only have one profile and each profile can only beling to a single user.
 
+### Program
+- Program model has two types of relationships with the user model. A program can have either clients or belong to a coach.
+- Program model sets a `one-to-many` with a coach, where a program can only belong to one coach, where as a coach can have multiple programs.
+- Programs have a `many-to-many` relationship with clients. Every client may enroll in multiple programs and every program may have many clients enrolled in it.
+- Programs have a `one-to-many` relationship with reviews. Reviews can only belong to one program, where as a program can have many reviews.
+- Programs have a `one-to-many` relationship with categories. Each program has to belong to a single category and each category can have many programs under it.
+- Program have a `one-to-one` relationship with images. Each image belongs to one program and every program has to have and image atteched upon creation.
 
+### ClientProgram
+- ClientPrograms is a join table that contains user_id and program_id columns as references.
+- ClientPrograms table sets up a `one-to-one` relationship between clients and programs
+- Each relation in the ClientPrograms table is used for one unique relation.
 
+### Profile 
+- The profile model has a `one-to-one` relationship with the user. 
+- Each user can have only profile and each profile can only belong to a single user.
 
+### Review
+- Reviews have a `one-to-many` relationship with users. A user can have many reviews and a review can only beling to one user.
+- Reviews have a `one-to-many` relationship with programs. A program may have many reviews, a review can only belong to a single program.
+
+### Category
+- The category model has a `one-to-many` relationship with programs. A program must and can belongto a single category, where as a category may have many programs that belong to it.
 
 
 ## R19-Provide your database schema design
