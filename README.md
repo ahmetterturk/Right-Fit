@@ -212,7 +212,6 @@ The target audience of this website is people who want to discover a wide range 
 
 
 ## R16-Detail any third party services that your app will use
-
 ### Devise
 Devise is an established and popular gem that is used for authentication in rails applications. Devise is based on a modularity concept and lets developers use only the solutions that thay need. Devise carries the heavy load of authentication with modules that operate to register new users, hash passwords before they are saved to the database, validate emails and passwords, recover and reset passwords and many other operations. In this application, devise is used for registrating new accounts, handling user sessions and authenticating users before they are allowed access to certain features.
 
@@ -248,10 +247,66 @@ Bootstrap is a free and open source CSS framework directed at responsive, mobile
 
 
 ## R17-Describe your projects models in terms of the relationships (active record associations) they have with each other
+### User
+```ruby
+has_and_belongs_to_many :programs_to_attend, class_name: 'Program', join_table: "clients_programs"
+has_many :programs_to_coach, class_name: "Program", foreign_key: "coach_id", dependent: :destroy
+has_many :reviews_to_make, class_name: "Review", foreign_key: "user_id", dependent: :destroy
+has_one :profile, dependent: :destroy
+```
+- The `User` in this application acts as both the `coach` and the `client` so it has two types of relationships with the `Program` model. 
+- The `User` can post many `Programs` as a `coach`, this association is set up within the `User` and `Program` table, with the `coach_id` foreign key. The `coach` also has a `dependant: :destroy` capability where the posted program gets destroyed along with the coach.
+- The `User` can join many `Programs` as a `client`. This association is established with the `ClientPrograms` join table that references the `program_id` and the `user_id`.
+- The `User` is able to make many `Reviews` on different `Programs` and the reviews get destroyed along with the `User` it belongs to.
+- The `User` can only have one `Profile` which is optional. The `User` has to create a `Profile` in order to receive a suggestion.
+
+### Program
+```ruby 
+has_and_belongs_to_many :clients, class_name: "User", join_table: "clients_programs", optional: true
+has_many :reviews_to_receive, class_name: "Review", foreign_key: "program_id", dependent: :destroy
+has_one_attached :image, dependent: :destroy
+belongs_to :coach, class_name: "User"
+belongs_to :category
+```
+- A `Program` may have many `clients` enrolled to it and also belongs to many `clients` which is an optional association. This association is established throught the `ClientPrograms` table.
+- A `Program` has to belong to a `coach` through the `Users` table.
+- A `Program` has to belong to a `Category` upon creation.
+- A `Program` has to have one `image` attached and this `image` gets destroyed along with the `Program`.
+- A `Program` can receive many `Reviews` from different `Users` and these `Reviews` get destroyed along with the `Program`.
+
+### ClientProgram
+```ruby
+belongs_to :user
+belongs_to :program
+```
+- This model is used to reference a join table between the `User` and the `Program`, creating a `client-program` relationship.
+- The association in this model has to reference the `Users` and `Programs` through `program_id` and `user_id` columns.
+
+### Profile 
+```ruby
+belongs_to :user
+```
+- The `Profile` belongs to a single `User`.
+- Creation of a `Profile` is optional, but it is necessary in order to use the suggestions functionality.
+- The `Profile` gets destroyed along with the `User` it belongs to.
+
+### Review
+```ruby
+belongs_to :user
+belongs_to :program
+```
+- A `Review` has to belong to both a `User` and a `Program`.
+- The `Review` gets destroyed either if the owner's account is deleted or the `Program` that is belongs to is deleted.
+- The `Review` establishes its connections through `program_id` and `user_id` references.
 
 
-
-
+### Category 
+```ruby
+has_many :programs
+```
+- The `Category` model has four registered categories in it and the existance of these categories is independant of any `Users` or `Programs`. 
+- A `Category` may have many `Programs` that belong to it but this is optional
+- A `Program` however has to belong to certain `Category`.
 
 
 
